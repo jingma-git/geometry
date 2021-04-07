@@ -122,12 +122,7 @@ namespace acamcad
 
 			VertexVertexIter(MVert *vert, const PolyMesh *_mesh);
 
-			VertexVertexIter &operator++()
-			{
-				voh_ = voh_->rotateNext();
-				ref_ = voh_->toVertex();
-				return *this;
-			}
+			VertexVertexIter &operator++();
 			VertexVertexIter &operator--();
 
 			VertexVertexIter operator++(int)
