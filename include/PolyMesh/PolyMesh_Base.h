@@ -148,6 +148,11 @@ namespace acamcad
 
 			//Try to set the half of the point as the boundary half. Be sure call it before adding faces by yourself.
 			void adjustOutgoingHalfedge();
+			friend std::ostream &operator<<(std::ostream &out, const MVert &v)
+			{
+				out << "v" << v.index();
+				return out;
+			}
 		};
 
 		/**
@@ -217,7 +222,7 @@ namespace acamcad
 
 			bool isBoundary() const { return poly_face_ == nullptr; }
 
-			int index() { return index_; }
+			int index() const { return index_; }
 			//int edge_index() { return index_ / 2; }
 			void set_index(int index) { index_ = index; }
 
@@ -244,6 +249,11 @@ namespace acamcad
 
 			Texcoord getTexture() { return Texcoord(texcoord_[0], texcoord_[1]); }
 			Texcoord getTextureUVW() { return Texcoord(texcoord_[0], texcoord_[1], texcoord_[2]); }
+			friend std::ostream &operator<<(std::ostream &out, const MHalfedge &he)
+			{
+				out << "h" << he.index();
+				return out;
+			}
 		};
 
 		/**
@@ -334,6 +344,11 @@ namespace acamcad
 			//	t.normalize();
 			//	return t;
 			//}
+			friend std::ostream &operator<<(std::ostream &out, const MEdge &e)
+			{
+				out << "e" << e.index();
+				return out;
+			}
 		};
 
 		/**
@@ -351,7 +366,7 @@ namespace acamcad
 
 			MVector3 normal_;	 /* face normal */
 			int polynum_;		 /* number of vertices in the face */
-			int material_index_; /* material index, ��ʱ���OpenMesh�е�texindex */
+			int material_index_; /* material index */
 			float color_[4];
 
 		public:
@@ -444,6 +459,12 @@ namespace acamcad
 
 			void setMaterialIndex(int id) { material_index_ = id; }
 			int meterialIndex() const { return material_index_; }
+
+			friend std::ostream &operator<<(std::ostream &out, const MPolyFace &f)
+			{
+				out << "f" << f.index();
+				return out;
+			}
 		};
 
 	} // namespace polymesh

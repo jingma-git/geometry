@@ -22,14 +22,23 @@ namespace acamcad
 
 		const double MehsThreshold = 0.0001;
 
+		// Halfedge structure
+		// Vert: pointer to halfedge (from_vertex in this impl)
+		//       store data: position, normal
+		// Halfedge: pointer to next_halfedge, prev_halfedge, opposite_halfedge, from_vertex, adjacent_face, edge
+		// Edge: pointer to two vertices, halfedge
+		// PolyFace: pointer to halfedge
+		//           store data: normal, texture_idx
 		class PolyMesh
 		{
 		private:
+			// pointers
 			std::vector<MHalfedge *> half_edges_;
 			std::vector<MVert *> vertices_;
 			std::vector<MEdge *> edges_;
 			std::vector<MPolyFace *> polygons_;
 
+			// actual data (vert position, norm, uv, face normal, etc.) is managed by MemoryPool
 			MemoryPool<MHalfedge> poolHE;
 			MemoryPool<MVert> poolV;
 			MemoryPool<MEdge> poolE;

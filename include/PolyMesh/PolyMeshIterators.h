@@ -3,7 +3,7 @@
 #include <vector>
 #include "PolyMesh_Base.h"
 
-// what's this pattern? inherit from a sepcific specialization of BaseClass
+// pattern? inherit from a sepcific specialization of BaseClass
 namespace acamcad
 {
 	namespace polymesh

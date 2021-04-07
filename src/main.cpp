@@ -19,7 +19,87 @@ void testBasicTriangle()
 	vertlist.push_back(v2);
 	auto p0 = mesh->addPolyFace(vertlist);
 
-	writeMesh("triangle.obj", mesh);
+	writeMesh("output/triangle.obj", mesh);
+	delete (mesh);
+}
+
+void testTwoTriangles()
+{
+	PolyMesh *mesh = new PolyMesh();
+
+	auto v0 = mesh->addVertex(0, 0, 0);
+	auto v1 = mesh->addVertex(1, 0, 0);
+	auto v2 = mesh->addVertex(1, 1, 0);
+	auto v3 = mesh->addVertex(0, 1, 0);
+
+	std::vector<MVert *> vertlist, vertlist1;
+	vertlist.push_back(v0);
+	vertlist.push_back(v1);
+	vertlist.push_back(v2);
+	vertlist1.push_back(v0);
+	vertlist1.push_back(v2);
+	vertlist1.push_back(v3);
+	auto f0 = mesh->addPolyFace(vertlist);
+	auto f1 = mesh->addPolyFace(vertlist1);
+
+	writeMesh("output/triangle.obj", mesh);
+	delete (mesh);
+}
+
+void testThreeTriangles()
+{
+	PolyMesh *mesh = new PolyMesh();
+
+	auto v0 = mesh->addVertex(0, 0, 0);
+	auto v1 = mesh->addVertex(1, 0, 0);
+	auto v2 = mesh->addVertex(1, 1, 0);
+	auto v3 = mesh->addVertex(0, 1, 0);
+	auto v4 = mesh->addVertex(0, 2, 0);
+	auto v5 = mesh->addVertex(-1, 0, 0);
+
+	std::vector<MVert *> vertlist, vertlist1, vertlist2;
+	vertlist.push_back(v0);
+	vertlist.push_back(v1);
+	vertlist.push_back(v2);
+	vertlist1.push_back(v3);
+	vertlist1.push_back(v4);
+	vertlist1.push_back(v5);
+	vertlist2.push_back(v0);
+	vertlist2.push_back(v2);
+	vertlist2.push_back(v3);
+	auto f0 = mesh->addPolyFace(vertlist);
+	auto f1 = mesh->addPolyFace(vertlist1);
+	auto f2 = mesh->addPolyFace(vertlist2);
+
+	writeMesh("output/triangle.obj", mesh);
+	delete (mesh);
+}
+
+void testThreeTrianglesPatchingLink()
+{
+	PolyMesh *mesh = new PolyMesh();
+
+	auto v0 = mesh->addVertex(0, 0, 0);
+	auto v1 = mesh->addVertex(1, 0, 0);
+	auto v2 = mesh->addVertex(1, 1, 0);
+	auto v3 = mesh->addVertex(0, 1, 0);
+	auto v4 = mesh->addVertex(1, 2, 0);
+
+	std::vector<MVert *> vertlist, vertlist1, vertlist2;
+	vertlist.push_back(v0);
+	vertlist.push_back(v1);
+	vertlist.push_back(v2);
+	vertlist1.push_back(v2);
+	vertlist1.push_back(v4);
+	vertlist1.push_back(v3);
+	vertlist2.push_back(v0);
+	vertlist2.push_back(v2);
+	vertlist2.push_back(v3);
+	auto f0 = mesh->addPolyFace(vertlist);
+	auto f1 = mesh->addPolyFace(vertlist1);
+	auto f2 = mesh->addPolyFace(vertlist2);
+
+	writeMesh("output/triangle.obj", mesh);
 	delete (mesh);
 }
 
@@ -232,34 +312,51 @@ void exampleMeshTraverse(PolyMesh *mesh)
 	mesh->polygonAdjacentPolygon(f);
 }
 
+void testMemPool()
+{
+	using namespace std;
+	MemoryPool<int> pool;
+	for (int i = 0; i < 10; i++)
+	{
+		int *ptr = pool.Request();
+		*ptr = i;
+		cout << "address=" << ptr << " val=" << i << endl;
+	}
+	pool.Clear();
+}
+
 int main()
 {
-	//create a basic mesh
-	testBasicTriangle();
+	// testMemPool();
+	// create a basic mesh
+	// testBasicTriangle();
+	// testTwoTriangles();
+	// testThreeTriangles();
+	testThreeTrianglesPatchingLink();
 
-	//mesh load an write , now only support obj/off
-	PolyMesh *mesh = new PolyMesh();
-	loadMesh("triangle.obj", mesh);
-	writeMesh("triangle.obj", mesh);
-	//you can also use the IO option such as
-	IOOptions opt;
-	opt.vert_have_normal = true; //it will load vertex normal
-	loadMesh("triangle.obj", mesh, opt);
-	writeMesh("triangle.obj", mesh, opt);
+	// //mesh load an write , now only support obj/off
+	// PolyMesh *mesh = new PolyMesh();
+	// loadMesh("triangle.obj", mesh);
+	// writeMesh("triangle.obj", mesh);
+	// //you can also use the IO option such as
+	// IOOptions opt;
+	// opt.vert_have_normal = true; //it will load vertex normal
+	// loadMesh("triangle.obj", mesh, opt);
+	// writeMesh("triangle.obj", mesh, opt);
 
-	//using iter to operating mesh;
-	exampleMeshIter(mesh);
-	//using index to operating mesh;
-	exampleMeshTraverse(mesh);
+	// //using iter to operating mesh;
+	// exampleMeshIter(mesh);
+	// //using index to operating mesh;
+	// exampleMeshTraverse(mesh);
 
-	//example for split e triangle mesh edge
-	exampleSplitTriangle();
+	// //example for split e triangle mesh edge
+	// exampleSplitTriangle();
 
-	//example for flip e triangle mesh edge
-	exampleFlipTriangle();
+	// //example for flip e triangle mesh edge
+	// exampleFlipTriangle();
 
-	//example for collapse e triangle mesh edge
-	exampleCollapseTriangle();
+	// //example for collapse e triangle mesh edge
+	// exampleCollapseTriangle();
 }
 
 //int main()
