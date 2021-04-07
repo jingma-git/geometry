@@ -6,371 +6,391 @@
 #include "PolyMeshIterators.h"
 #include "MemoryPool.h"
 
-
-namespace acamcad {
-namespace polymesh {
-
-typedef std::vector<MVert*>::iterator VertexIter;
-typedef std::vector<MEdge*>::iterator EdgeIter;
-typedef std::vector<MHalfedge*>::iterator HalfEdgeIter;
-typedef std::vector<MPolyFace*>::iterator FaceIter;
-typedef std::vector<MVert*>::const_iterator CVertexIter;
-typedef std::vector<MEdge*>::const_iterator CEdgeIter;
-typedef std::vector<MHalfedge*>::const_iterator CHalfEdgeIter;
-typedef std::vector<MPolyFace*>::const_iterator CFaceIter;
-
-const double MehsThreshold = 0.0001;
-
-class PolyMesh
+namespace acamcad
 {
-private:
+	namespace polymesh
+	{
 
-	std::vector<MHalfedge*> half_edges_;
-	std::vector<MVert*>		vertices_;
-	std::vector<MEdge*>		edges_;
-	std::vector<MPolyFace*>	polygons_;
+		typedef std::vector<MVert *>::iterator VertexIter;
+		typedef std::vector<MEdge *>::iterator EdgeIter;
+		typedef std::vector<MHalfedge *>::iterator HalfEdgeIter;
+		typedef std::vector<MPolyFace *>::iterator FaceIter;
+		typedef std::vector<MVert *>::const_iterator CVertexIter;
+		typedef std::vector<MEdge *>::const_iterator CEdgeIter;
+		typedef std::vector<MHalfedge *>::const_iterator CHalfEdgeIter;
+		typedef std::vector<MPolyFace *>::const_iterator CFaceIter;
 
-	MemoryPool<MHalfedge> poolHE;
-	MemoryPool<MVert> poolV;
-	MemoryPool<MEdge> poolE;
-	MemoryPool<MPolyFace> poolP;
+		const double MehsThreshold = 0.0001;
 
-	std::vector<std::string> texture_name;
+		class PolyMesh
+		{
+		private:
+			std::vector<MHalfedge *> half_edges_;
+			std::vector<MVert *> vertices_;
+			std::vector<MEdge *> edges_;
+			std::vector<MPolyFace *> polygons_;
 
-public:
-	PolyMesh() {};
-	~PolyMesh();
+			MemoryPool<MHalfedge> poolHE;
+			MemoryPool<MVert> poolV;
+			MemoryPool<MEdge> poolE;
+			MemoryPool<MPolyFace> poolP;
 
-public:
-//=====================================================================
-// Get Method
-//=====================================================================
-	size_t numVertices() const { return vertices_.size(); }
-	size_t numEdges() const { return edges_.size(); }
-	size_t numPolygons() const { return polygons_.size(); }
-	size_t numHalfEdges() const { return half_edges_.size(); }
+			std::vector<std::string> texture_name;
 
-	const std::vector<MVert*>& vertices() const { return vertices_; }
-	const std::vector<MEdge*>& edges() const { return edges_; }
-	const std::vector<MPolyFace*>& polyfaces() const { return polygons_; }
-	const std::vector<MHalfedge*>& halfEdges() const { return half_edges_; }
+		public:
+			PolyMesh(){};
+			~PolyMesh();
 
-	std::vector<MVert*> vertices() { return vertices_; }
-	std::vector<MEdge*> edges() { return edges_; }
-	std::vector<MPolyFace*> polyfaces() { return polygons_; }
-	std::vector<MHalfedge*> halfEdges() { return half_edges_; }
+		public:
+			//=====================================================================
+			// Get Method
+			//=====================================================================
+			size_t numVertices() const { return vertices_.size(); }
+			size_t numEdges() const { return edges_.size(); }
+			size_t numPolygons() const { return polygons_.size(); }
+			size_t numHalfEdges() const { return half_edges_.size(); }
 
-	/// ID should be used cautiously in topology changes
-	/// The newly added unit will be at the end of the list
-	/// The deleted part will exchange the deleted part with the last part
-	MVert* vert(const size_t id) { return (id < numVertices() ? vertices_[id] : nullptr); }
-	MEdge* edge(const size_t id) { return (id < numEdges() ? edges_[id] : nullptr); }
-	MPolyFace* polyface(const size_t id) { return (id < numPolygons() ? polygons_[id] : nullptr); }
-	MHalfedge* halfedge(const size_t id) { return (id < numHalfEdges() ? half_edges_[id] : nullptr); }
+			const std::vector<MVert *> &vertices() const { return vertices_; }
+			const std::vector<MEdge *> &edges() const { return edges_; }
+			const std::vector<MPolyFace *> &polyfaces() const { return polygons_; }
+			const std::vector<MHalfedge *> &halfEdges() const { return half_edges_; }
 
-	const MVert* vert(const size_t id) const { return (id < numVertices() ? vertices_[id] : nullptr); }
-	const MEdge* edge(const size_t id) const { return (id < numEdges() ? edges_[id] : nullptr); }
-	const MPolyFace* polyface(const size_t id) const { return (id < numPolygons() ? polygons_[id] : nullptr); }
-	const MHalfedge* halfedge(const size_t id) const { return (id < numHalfEdges() ? half_edges_[id] : nullptr); }
+			std::vector<MVert *> vertices() { return vertices_; }
+			std::vector<MEdge *> edges() { return edges_; }
+			std::vector<MPolyFace *> polyfaces() { return polygons_; }
+			std::vector<MHalfedge *> halfEdges() { return half_edges_; }
 
-	bool isEmpty() const { return vertices_.empty(); }
+			/// ID should be used cautiously in topology changes
+			/// The newly added unit will be at the end of the list
+			/// The deleted part will exchange the deleted part with the last part
+			MVert *vert(const size_t id) { return (id < numVertices() ? vertices_[id] : nullptr); }
+			MEdge *edge(const size_t id) { return (id < numEdges() ? edges_[id] : nullptr); }
+			MPolyFace *polyface(const size_t id) { return (id < numPolygons() ? polygons_[id] : nullptr); }
+			MHalfedge *halfedge(const size_t id) { return (id < numHalfEdges() ? half_edges_[id] : nullptr); }
 
-//=====================================================================
-// Traverse Method
-//=====================================================================
-	/// return the mesh one boundary vertices in order, the mesh may have many boundary , This function only search one boundary;
-	std::vector<MVert*> boundaryVertices();	
-	/// return all boundary vertices, every one is in order;
-	//std::vector<std::vector<MVert*>> boundaryVerticesAll();
+			const MVert *vert(const size_t id) const { return (id < numVertices() ? vertices_[id] : nullptr); }
+			const MEdge *edge(const size_t id) const { return (id < numEdges() ? edges_[id] : nullptr); }
+			const MPolyFace *polyface(const size_t id) const { return (id < numPolygons() ? polygons_[id] : nullptr); }
+			const MHalfedge *halfedge(const size_t id) const { return (id < numHalfEdges() ? half_edges_[id] : nullptr); }
 
-	bool isBoundary(MVert* vert) const;
-	bool isBoundary(const MEdge* edge) const;
-	bool isBoundary(const MHalfedge* halfedge) const;
+			bool isEmpty() const { return vertices_.empty(); }
 
-	std::vector<MVert*>		vertAdjacentVertices(MVert* vert) const;
-	std::vector<MEdge*>		vertAdjacentEdge(MVert* vert) const;
-	std::vector<MHalfedge*> vertAdjacentHalfEdge(MVert* vert) const;
-	std::vector<MPolyFace*> vertAdjacentPolygon(MVert* vert) const;
+			//=====================================================================
+			// Traverse Method
+			//=====================================================================
+			/// return the mesh one boundary vertices in order, the mesh may have many boundary , This function only search one boundary;
+			std::vector<MVert *> boundaryVertices();
+			/// return all boundary vertices, every one is in order;
+			//std::vector<std::vector<MVert*>> boundaryVerticesAll();
 
-	std::vector<MPolyFace*> edgeAdjacentPolygon(MEdge* edge) const;
-	std::vector<MPolyFace*> polygonAdjacentPolygon(MPolyFace* face) const;
-	std::vector<MVert*>		polygonVertices(MPolyFace* face) const;
-	std::vector<MHalfedge*> polygonHalfedges(MPolyFace* face) const;
-	std::vector<MEdge*>		polygonEdges(MPolyFace* face) const;
+			bool isBoundary(MVert *vert) const;
+			bool isBoundary(const MEdge *edge) const;
+			bool isBoundary(const MHalfedge *halfedge) const;
 
-	MHalfedge* edgeHalfEdge(MEdge* edge, unsigned int di);
+			// only need to traverse one-ring halfedges by he->rotateNext()
+			std::vector<MVert *> vertAdjacentVertices(MVert *vert) const;
+			std::vector<MEdge *> vertAdjacentEdge(MVert *vert) const;
+			std::vector<MHalfedge *> vertAdjacentHalfEdge(MVert *vert) const;
+			std::vector<MPolyFace *> vertAdjacentPolygon(MVert *vert) const;
 
-	MEdge* edgeBetween(MVert* v0, MVert* v1);
-	MHalfedge* halfedgeBetween(MVert* v0, MVert* v1);
-	bool isConnected(MVert* v0, MVert* v1);
+			std::vector<MPolyFace *> edgeAdjacentPolygon(MEdge *edge) const;
+			std::vector<MPolyFace *> polygonAdjacentPolygon(MPolyFace *face) const;
+			std::vector<MVert *> polygonVertices(MPolyFace *face) const;
+			std::vector<MHalfedge *> polygonHalfedges(MPolyFace *face) const;
+			std::vector<MEdge *> polygonEdges(MPolyFace *face) const;
 
-	bool isFaceContainsVertices(MPolyFace* face, MVert* vert);
-	MHalfedge* faceHalfEdgeFromVert(MPolyFace* face, MVert* vert);
+			MHalfedge *edgeHalfEdge(MEdge *edge, unsigned int di);
 
-	size_t valence(MVert* vert) const;
+			MEdge *edgeBetween(MVert *v0, MVert *v1);
+			MHalfedge *halfedgeBetween(MVert *v0, MVert *v1); // starting from v0
+			bool isConnected(MVert *v0, MVert *v1);
 
-	bool isIsolated(MVert* vert) const;
-	bool isIsolated(MEdge* edge) const;
-	bool isIsolated(MPolyFace* face) const;
+			bool isFaceContainsVertices(MPolyFace *face, MVert *vert);
+			MHalfedge *faceHalfEdgeFromVert(MPolyFace *face, MVert *vert);
 
-	bool isTriangleMesh();
+			size_t valence(MVert *vert) const;
 
-//=====================================================================
-// Iterators
-//=====================================================================
-	VertexOHalfEdgeIter voh_iter(MVert* _v) const {
-		return VertexOHalfEdgeIter(_v, this);
-	}
-	VertexVertexIter vv_iter(MVert* _v) const {
-		return VertexVertexIter(_v, this);
-	}
-	VertexEdgeIter ve_iter(MVert* _v) const {
-		return VertexEdgeIter(_v, this);
-	}
-	VertexFaceIter vf_iter(MVert* _v) const {
-		return VertexFaceIter(_v, this);
-	}
+			bool isIsolated(MVert *vert) const;
+			bool isIsolated(MEdge *edge) const;
+			bool isIsolated(MPolyFace *face) const;
 
-	FaceHalfEdgeIter fhe_iter(MPolyFace* _f) const {
-		return FaceHalfEdgeIter(_f, this);
-	}
-	FaceVertexIter fv_iter(MPolyFace* _f) const {
-		return FaceVertexIter(_f, this);
-	}
-	FaceEdgeIter fe_iter(MPolyFace* _f) const {
-		return FaceEdgeIter(_f, this);
-	}
-	FaceFaceIter ff_iter(MPolyFace* _f) const {
-		return FaceFaceIter(_f, this);
-	}
+			bool isTriangleMesh();
 
-	VertexIter vertices_begin() {
-		return vertices_.begin();
-	}
-	VertexIter vertices_end() {
-		return vertices_.end();
-	}
+			//=====================================================================
+			// Iterators
+			//=====================================================================
+			VertexOHalfEdgeIter voh_iter(MVert *_v) const
+			{
+				return VertexOHalfEdgeIter(_v, this);
+			}
+			VertexVertexIter vv_iter(MVert *_v) const
+			{
+				return VertexVertexIter(_v, this);
+			}
+			VertexEdgeIter ve_iter(MVert *_v) const
+			{
+				return VertexEdgeIter(_v, this);
+			}
+			VertexFaceIter vf_iter(MVert *_v) const
+			{
+				return VertexFaceIter(_v, this);
+			}
 
-	EdgeIter edges_begin() {
-		return edges_.begin();
-	}
-	EdgeIter edges_end() {
-		return edges_.end();
-	}
+			FaceHalfEdgeIter fhe_iter(MPolyFace *_f) const
+			{
+				return FaceHalfEdgeIter(_f, this);
+			}
+			FaceVertexIter fv_iter(MPolyFace *_f) const
+			{
+				return FaceVertexIter(_f, this);
+			}
+			FaceEdgeIter fe_iter(MPolyFace *_f) const
+			{
+				return FaceEdgeIter(_f, this);
+			}
+			FaceFaceIter ff_iter(MPolyFace *_f) const
+			{
+				return FaceFaceIter(_f, this);
+			}
 
-	HalfEdgeIter halfedge_begin() {
-		return half_edges_.begin();
-	}
-	HalfEdgeIter halfedge_end() {
-		return half_edges_.end();
-	}
+			VertexIter vertices_begin()
+			{
+				return vertices_.begin();
+			}
+			VertexIter vertices_end()
+			{
+				return vertices_.end();
+			}
 
-	FaceIter polyfaces_begin() {
-		return polygons_.begin();
-	}
-	FaceIter polyfaces_end() {
-		return polygons_.end();
-	}
+			EdgeIter edges_begin()
+			{
+				return edges_.begin();
+			}
+			EdgeIter edges_end()
+			{
+				return edges_.end();
+			}
 
-	CVertexIter const_vertices_begin() const {
-		return vertices_.cbegin();
-	}
-	CVertexIter const_vertices_end() const {
-		return vertices_.cend();
-	}
+			HalfEdgeIter halfedge_begin()
+			{
+				return half_edges_.begin();
+			}
+			HalfEdgeIter halfedge_end()
+			{
+				return half_edges_.end();
+			}
 
-	CEdgeIter const_edges_begin() const  {
-		return edges_.cbegin();
-	}
-	CEdgeIter const_edges_end() const  {
-		return edges_.cend();
-	}
+			FaceIter polyfaces_begin()
+			{
+				return polygons_.begin();
+			}
+			FaceIter polyfaces_end()
+			{
+				return polygons_.end();
+			}
 
-	CHalfEdgeIter const_halfedge_begin() const  {
-		return half_edges_.cbegin();
-	}
-	CHalfEdgeIter const_halfedge_end() const  {
-		return half_edges_.cend();
-	}
+			CVertexIter const_vertices_begin() const
+			{
+				return vertices_.cbegin();
+			}
+			CVertexIter const_vertices_end() const
+			{
+				return vertices_.cend();
+			}
 
-	CFaceIter const_polyfaces_begin() const  {
-		return polygons_.cbegin();
-	}
-	CFaceIter const_polyfaces_end() const  {
-		return polygons_.cend();
-	}
+			CEdgeIter const_edges_begin() const
+			{
+				return edges_.cbegin();
+			}
+			CEdgeIter const_edges_end() const
+			{
+				return edges_.cend();
+			}
 
-//=====================================================================
-// Base Topology
-//=====================================================================
-	void reserveMemory(size_t nv);
-	void reserveMemory(size_t nv, size_t nf);
-	void clear();
+			CHalfEdgeIter const_halfedge_begin() const
+			{
+				return half_edges_.cbegin();
+			}
+			CHalfEdgeIter const_halfedge_end() const
+			{
+				return half_edges_.cend();
+			}
 
-	MVert* newVertex();
-	MEdge* newEdge();
-	MEdge* newEdge(MVert* v1, MVert* v2);
-	MHalfedge* newHelfEdge();
-	MPolyFace* newPolyFace();
+			CFaceIter const_polyfaces_begin() const
+			{
+				return polygons_.cbegin();
+			}
+			CFaceIter const_polyfaces_end() const
+			{
+				return polygons_.cend();
+			}
 
-	MVert* addVertex(double x, double y, double z);
-	MVert* addVertex(const MPoint3& point);
+			//=====================================================================
+			// Base Topology
+			//=====================================================================
+			void reserveMemory(size_t nv);
+			void reserveMemory(size_t nv, size_t nf);
+			void clear();
 
-	/// Juat add an edge and two opposite halfedges. The two halfedge are connected end to end. 
-	/// it will set the halfedge vertex but it will not set vert halfedge. 
-	/// Be careful when using this function
-	MEdge* addEdge(MVert* v_begin, MVert* v_end);
+			MVert *newVertex();
+			MEdge *newEdge();
+			MEdge *newEdge(MVert *v1, MVert *v2);
+			MHalfedge *newHelfEdge();
+			MPolyFace *newPolyFace();
 
-	/// add a face by given vertices, it will not detect duplicate face 
-	MPolyFace* addPolyFace(std::vector<size_t>& v_loop_id);
-	MPolyFace* addPolyFace(std::vector<MVert*>& v_loop);
+			MVert *addVertex(double x, double y, double z);
+			MVert *addVertex(const MPoint3 &point);
 
-	/// Just add a face to connect the given halfedges, requiring the input halfedges to be connected end to end
-	/// Don't use this function yet
-	MPolyFace* addPolyFace(std::vector<MHalfedge*>& he_loop);
+			/// Juat add an edge and two opposite halfedges. The two halfedge are connected end to end.
+			/// it will set the halfedge vertex but it will not set vert halfedge.
+			/// Be careful when using this function
+			MEdge *addEdge(MVert *v_begin, MVert *v_end);
 
-	void deleteVertex(MVert* vert);
-	void deleteEdges(MEdge* edge);
-	void deletePolyFace(MPolyFace* face);
+			/// add a face by given vertices, it will not detect duplicate face
+			MPolyFace *addPolyFace(std::vector<size_t> &v_loop_id);
+			MPolyFace *addPolyFace(std::vector<MVert *> &v_loop);
 
-	size_t delete_isolated_vertices();
-	size_t delete_isolated_edges();
+			/// Just add a face to connect the given halfedges, requiring the input halfedges to be connected end to end
+			/// Don't use this function yet
+			MPolyFace *addPolyFace(std::vector<MHalfedge *> &he_loop);
 
-	void deleteMultipleVerttex(std::vector<MVert*>& vert_list);
-	void deleteMultipleEdge(std::vector<MEdge*> edge_list);
-	void deleteMultiplePolyFace(std::vector<MPolyFace*> face_list);
+			void deleteVertex(MVert *vert);
+			void deleteEdges(MEdge *edge);
+			void deletePolyFace(MPolyFace *face);
 
-//=====================================================================
-// MeshBasedMethod
-//=====================================================================
-	/// the closet Point is use iter, it is very solw, do not use it now
-	MVert* closestPoint(const MPoint3& p);
-	double closestPoint(const MPoint3& p, MVert* close_v);
+			size_t delete_isolated_vertices();
+			size_t delete_isolated_edges();
 
-	/// reverse a face so that the normal direction of the facs is reversed.
-    /// only reverses the inner halfedge of face, it will cause error in ordinary mesh
-	void reverse_face(MPolyFace* face);
+			void deleteMultipleVerttex(std::vector<MVert *> &vert_list);
+			void deleteMultipleEdge(std::vector<MEdge *> edge_list);
+			void deleteMultiplePolyFace(std::vector<MPolyFace *> face_list);
 
-	/// Reverse a isolated face, also reverse it's boundary halfedge£¬return false for non-isolated
-	bool reverseIsolatedFace(MPolyFace* face);
+			//=====================================================================
+			// MeshBasedMethod
+			//=====================================================================
+			/// the closet Point is use iter, it is very solw, do not use it now
+			MVert *closestPoint(const MPoint3 &p);
+			double closestPoint(const MPoint3 &p, MVert *close_v);
 
-	/// Reverse all halfedge of a mesh
-	void reverse_mesh();
+			/// reverse a face so that the normal direction of the facs is reversed.
+			/// only reverses the inner halfedge of face, it will cause error in ordinary mesh
+			void reverse_face(MPolyFace *face);
 
-	/// update all vertices normal use face normal. before use it, make sure you have set face normal.
-	void updateVerticesNormal(bool is_update_face = false);
-	/// update all faces normal
-	void updateFacesNormal();
-	void updateMeshNormal();
-//=====================================================================
-// Low Level API
-//=====================================================================
-	/// Insert a point in the middle of an edge, only split the edge into two edges
-	MVert* splitEdgeMakeVertex(MEdge* edge);
+			/// Reverse a isolated face, also reverse it's boundary halfedgeï¿½ï¿½return false for non-isolated
+			bool reverseIsolatedFace(MPolyFace *face);
 
-	/// Delete the vertex with a degree of 2 that is not a boundary, leaving an edge connecting the two neighbors of the vertex.
-	MEdge* jointEdgeRemoveVertex(MVert* vert);
+			/// Reverse all halfedge of a mesh
+			void reverse_mesh();
 
-	/// connect two unconnected vertices v0/v1 in face, creat a edge divide face into two polygonal faces
-	MEdge* splitFaceMakeEdge(MPolyFace* face, MVert* v0, MVert* v1);
+			/// update all vertices normal use face normal. before use it, make sure you have set face normal.
+			void updateVerticesNormal(bool is_update_face = false);
+			/// update all faces normal
+			void updateFacesNormal();
+			void updateMeshNormal();
+			//=====================================================================
+			// Low Level API
+			//=====================================================================
+			/// Insert a point in the middle of an edge, only split the edge into two edges
+			MVert *splitEdgeMakeVertex(MEdge *edge);
 
-	/// split a polygon completely into triangles
-	void splitNGonTriangle(MPolyFace* face);
+			/// Delete the vertex with a degree of 2 that is not a boundary, leaving an edge connecting the two neighbors of the vertex.
+			MEdge *jointEdgeRemoveVertex(MVert *vert);
 
-	/// split a quadrilateral into two triangles, 
-	/// try to avoid grids with poor angles when the isquality setting
-	MEdge* splitQuadrilateralTriangle(MPolyFace* face, bool isqulaty = false);
+			/// connect two unconnected vertices v0/v1 in face, creat a edge divide face into two polygonal faces
+			MEdge *splitFaceMakeEdge(MPolyFace *face, MVert *v0, MVert *v1);
 
-	/// ½«ÊäÈëµÄ¶¥µãÁ¬½ÓÊäÈëÃæµÄÆäËû¶¥µã£¬½«Ãæ·Ö³É¶à¸öÈý½ÇÐÎ£¬¶ÔÓÚ·ÇÍ¹Çé¿ö£¬»áÓÐ·­×ª£¬²»»á¼ì²âµãÔÚ²»ÔÚ¶à±ßÐÎÉÏ¡£
-	void SplitFaceWithSingleFaceVertex(MPolyFace* face, MVert* v_new);
+			/// split a polygon completely into triangles
+			void splitNGonTriangle(MPolyFace *face);
 
-	/// ½«Ò»Ìõ±ßsplit£¬È»ºó½«ÐÂÉú³ÉµÄ¶¥µãÁ¬½ÓÏàÁÚÁ½¸öÃæµÄÆäËû¶¥µã£¬½«ÏàÁÚÁ½¸öÃæ·Ö³É¶à¸öÈý½ÇÐÎ£¬¶ÔÓÚ·ÇÍ¹Çé¿ö£¬»áÓÐ·­×ª
-	MVert* splitEdgeSplitPolygon(MEdge* edge);
+			/// split a quadrilateral into two triangles,
+			/// try to avoid grids with poor angles when the isquality setting
+			MEdge *splitQuadrilateralTriangle(MPolyFace *face, bool isqulaty = false);
 
-	bool is_collapse_ok(MHalfedge* he);
-	/**
+			/// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã£¬ï¿½ï¿½ï¿½ï¿½Ö³É¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î£ï¿½ï¿½ï¿½ï¿½Ú·ï¿½Í¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð·ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú²ï¿½ï¿½Ú¶ï¿½ï¿½ï¿½ï¿½ï¿½Ï¡ï¿½
+			void SplitFaceWithSingleFaceVertex(MPolyFace *face, MVert *v_new);
+
+			/// ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½splitï¿½ï¿½È»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÉµÄ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö³É¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î£ï¿½ï¿½ï¿½ï¿½Ú·ï¿½Í¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð·ï¿½×ª
+			MVert *splitEdgeSplitPolygon(MEdge *edge);
+
+			bool is_collapse_ok(MHalfedge *he);
+			/**
 	* the collapse function for polygon mesh, the from vert will be delete
 	*/
-	void collapse(MHalfedge* he);
+			void collapse(MHalfedge *he);
 
+			/// Combine two adjacent faces of an edge into one face
+			/// The input edge is the only intersection edge of two adjacent faces. No vertices will be deleted
+			/// +-----+        +-----+
+			/// |     |        |     |
+			/// +-----+   ->   +     +
+			/// |     |        |     |
+			/// +-----+        +-----+
+			MPolyFace *jointFaceRemoveEdge(MEdge *edge);
 
-	/// Combine two adjacent faces of an edge into one face
-	/// The input edge is the only intersection edge of two adjacent faces. No vertices will be deleted
-	/// +-----+        +-----+
-	/// |     |        |     |
-	/// +-----+   ->   +     +
-	/// |     |        |     |
-	/// +-----+        +-----+
-	MPolyFace* jointFaceRemoveEdge(MEdge* edge);
+			/// merge edge: ï¿½ï¿½Ö»ï¿½É¶ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ßºÏ²ï¿½Îª1ï¿½ï¿½-----ï¿½ï¿½ï¿½ï¿½jointEdgeRemoveVertex
+			MEdge *mergeEdge(MEdge *edge0, MEdge *edge1);
+			/// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï²ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½-----ï¿½ï¿½ï¿½ï¿½jointFaceRemoveEdge
+			MPolyFace *mergeFace(MPolyFace *f0, MPolyFace *f1);
 
+			/// ï¿½ï¿½ï¿½ï¿½Ï²ï¿½ï¿½ï¿½Ö»Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄ±ß¶ï¿½ï¿½Ï²ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È»ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½Ç¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½ï¿½
+			/// ï¿½ï¿½Òªï¿½Çµï¿½ï¿½ï¿½weldEdgeï¿½ï¿½ï¿½ï¿½ï¿½ÚµÄ¿ï¿½ï¿½Ü»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			bool weldVertex(MVert *v_ori, MVert *v_tar, double tolerance = 1e-2);
 
-	/// merge edge: ½«Ö»ÓÉ¶¥µã·Ö¸îµÄÁ½Ìõ±ßºÏ²¢Îª1Ìõ-----µ÷ÓÃjointEdgeRemoveVertex
-	MEdge* mergeEdge(MEdge* edge0, MEdge* edge1);
-	/// ½«Á½¸öÃæºÏ²¢³ÉÒ»¸öÃæ-----µ÷ÓÃjointFaceRemoveEdge
-	MPolyFace* mergeFace(MPolyFace* f0, MPolyFace* f1);
+			///ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ßºï¿½ï¿½Ó³ï¿½Ò»ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¶ï¿½ï¿½Ç¶ï¿½ï¿½ï¿½ï¿½Ò¶Ëµã¿¿ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½e0ï¿½ï¿½e0ï¿½Ä²ï¿½ï¿½ï¿½e1ï¿½ï¿½ï¿½ÃµÄ¶Ëµï¿½
+			bool weldEdge(MEdge *e0, MEdge *e1, double tolerance = 1e-2); //it will deleat e0;
 
+			/// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎµÄµï¿½ï¿½ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½Ä¶ï¿½ï¿½ï¿½-1ï¿½ï¿½
+			bool separateSingleVert(MVert *vert);
+			bool separateSingleVert(MVert *vert, std::vector<MVert *> &new_vert_list);
 
-	/// ¶¥µãºÏ²¢£¬Ö»Òª½«¶¥µãËùÓÐµÄ±ß¶¼ºÏ²¢µ½Ò»Æð£¬Õâ¸öµã×ÔÈ»»áÉ¾µô£¬¹Ø¼üÊÇ¶à¸öµãÔõÃ´º¸½Ó
-	/// Ö÷ÒªÊÇµ÷ÓÃweldEdge£¬ÏÖÔÚµÄ¿ÉÄÜ»¹ÓÐÎÊÌâ
-	bool weldVertex(MVert* v_ori, MVert* v_tar, double tolerance = 1e-2);	
+			/// separate a single edge, it will add a new edge
+			bool separateSingleEdge(MEdge *edge);
+			bool separateSingleEdge(MEdge *edge, std::vector<MEdge *> &new_edge_list);
 
-	///½«Á½Ìõ±ßº¸½Ó³ÉÒ»Ìõ±ß£¬ÕâÁ½Ìõ±ß¶¼ÊÇ¶¥µãÇÒ¶Ëµã¿¿½ü£¬É¾³ýe0ºÍe0µÄ²»Óëe1¹«ÓÃµÄ¶Ëµã
-	bool weldEdge(MEdge* e0, MEdge* e1, double tolerance = 1e-2);	//it will deleat e0;
+			//=====================================================================
+			// Triangle Mesh API
+			//=====================================================================
+			bool is_flip_ok_Triangle(MEdge *edge);
 
+			void flipEdgeTriangle(MEdge *edge);
 
-	/// ¶¥µã·ÖÀë£¬½«Ò»¸ö²»ÊÇÁ÷ÐÎµÄµã·ÖÀë£¬Ìí¼ÓÁ÷ÐÎ×ÓÇøÓòÊýÄ¿µÄ¶¥µã-1¡£
-	bool separateSingleVert(MVert* vert);
-	bool separateSingleVert(MVert* vert, std::vector<MVert*>& new_vert_list);
-
-	/// separate a single edge, it will add a new edge
-	bool separateSingleEdge(MEdge* edge);
-	bool separateSingleEdge(MEdge* edge, std::vector<MEdge*>& new_edge_list);
-
-
-//=====================================================================
-// Triangle Mesh API 
-//=====================================================================
-	bool is_flip_ok_Triangle(MEdge* edge);
-
-	void flipEdgeTriangle(MEdge* edge);
-
-	bool is_collapse_ok_Triangle(MHalfedge* he);
-	/**
+			bool is_collapse_ok_Triangle(MHalfedge *he);
+			/**
 	* the from vert will be delete
 	*/
-	void collapseTriangle(MHalfedge* he);
+			void collapseTriangle(MHalfedge *he);
 
-	MVert* splitEdgeTriangle(MEdge* edge);
+			MVert *splitEdgeTriangle(MEdge *edge);
 
-//=====================================================================
-// Calculating location API
-//=====================================================================
-	MPoint3 calculatFaceCenter(MPolyFace* face);
-	MPoint3 calculatEdgeCenter(MEdge* edge);
+			//=====================================================================
+			// Calculating location API
+			//=====================================================================
+			MPoint3 calculatFaceCenter(MPolyFace *face);
+			MPoint3 calculatEdgeCenter(MEdge *edge);
 
-//=====================================================================
-// Texture processing, rendering API
-//=====================================================================
-	void add_texture_information(int id, std::string name);
-	size_t getFaceTexcoords(std::vector<Texcoord>& hehandles);
+			//=====================================================================
+			// Texture processing, rendering API
+			//=====================================================================
+			void add_texture_information(int id, std::string name);
+			size_t getFaceTexcoords(std::vector<Texcoord> &hehandles);
 
-private:
-	void deletePolyFace_fromMesh(MPolyFace* face);
-	void deleteHalfEdge_fromMesh(MHalfedge* halfedge);
-	void deleteVertex_fromMesh(MVert* vert);
-	void deleteEdge_fromMesh(MEdge* edge);
-	
-	void collpaseEdge(MHalfedge* he);
-	void collpaseLoop(MHalfedge* he);
+		private:
+			void deletePolyFace_fromMesh(MPolyFace *face);
+			void deleteHalfEdge_fromMesh(MHalfedge *halfedge);
+			void deleteVertex_fromMesh(MVert *vert);
+			void deleteEdge_fromMesh(MEdge *edge);
 
-	bool mesh_manifold_check();
+			void collpaseEdge(MHalfedge *he);
+			void collpaseLoop(MHalfedge *he);
 
-//=====================================================================
-//=====================================================================
-	/// Combine two adjacent faces of an edge into one face
-	/// This function does not detect whether there is a problem with the input£¬Called by jointFaceRemoveEdge
-	MPolyFace* jointFaceRemoveEdge(MPolyFace* f0, MPolyFace* f1, MEdge* edge);
-};
+			bool mesh_manifold_check();
 
-}//namespace polymesh
-}//namespaec acamcad
+			//=====================================================================
+			//=====================================================================
+			/// Combine two adjacent faces of an edge into one face
+			/// This function does not detect whether there is a problem with the inputï¿½ï¿½Called by jointFaceRemoveEdge
+			MPolyFace *jointFaceRemoveEdge(MPolyFace *f0, MPolyFace *f1, MEdge *edge);
+		};
+
+	} //namespace polymesh
+} // namespace acamcad

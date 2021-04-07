@@ -33,7 +33,7 @@ namespace acamcad
 			MPoint3 point_;
 			MVector3 normal_;
 
-			MHalfedge *he_;
+			MHalfedge *he_; // ? he_'s to or from
 
 		public:
 			MVert() : index_(-1), point_(0, 0, 0), normal_(0, 0, 0), he_(nullptr),
@@ -160,13 +160,13 @@ namespace acamcad
 		private:
 			int index_;
 
-			MVert *v_;
+			MVert *v_; // from vertex
 			MEdge *e_;
 			MPolyFace *poly_face_;
 
 			MHalfedge *next_, *prev_;
 
-			MHalfedge *pair_;
+			MHalfedge *pair_; //opposite halfedge
 
 			float texcoord_[3];
 
@@ -351,7 +351,7 @@ namespace acamcad
 
 			MVector3 normal_;	 /* face normal */
 			int polynum_;		 /* number of vertices in the face */
-			int material_index_; /* material index, ÔÝÊ±Ìæ´úOpenMeshÖÐµÄtexindex */
+			int material_index_; /* material index, ï¿½ï¿½Ê±ï¿½ï¿½ï¿½OpenMeshï¿½Ðµï¿½texindex */
 			float color_[4];
 
 		public:
