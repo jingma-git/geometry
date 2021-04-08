@@ -46,6 +46,7 @@ namespace acamcad
 
 		bool PolyMesh::isBoundary(MVert *vert) const
 		{
+			// a vert is a boundary vertex when one of outgoing edges is boundary
 			if (vert->halfEdge() == nullptr)
 			{
 				return true;
@@ -598,29 +599,29 @@ namespace acamcad
 			for (size_t i = 0; i < v_size; i++)
 			{
 				size_t i1 = (i + 1) % v_size;
-				cout << *v_loop[i] << "->" << *v_loop[i1] << endl;
+				// cout << *v_loop[i] << "->" << *v_loop[i1] << endl;
 
 				MEdge *e = edgeBetween(v_loop[i], v_loop[i1]);
 				if (e == nullptr)
 				{
 					e = addEdge(v_loop[i], v_loop[i1]);
 					is_edge_new[i] = true;
-					cout << "add new edge " << *e->halfEdge() << " " << *e->halfEdge()->pair() << " | " << *e << endl;
+					// cout << "add new edge " << *e->halfEdge() << " " << *e->halfEdge()->pair() << " | " << *e << endl;
 				}
-				else
-				{
-					cout << "find old edge " << *e->halfEdge() << " " << *e->halfEdge()->pair() << " | " << *e << endl;
-				}
+				// else
+				// {
+				// 	cout << "find old edge " << *e->halfEdge() << " " << *e->halfEdge()->pair() << " | " << *e << endl;
+				// }
 
 				if (e->halfEdge()->fromVertex() == v_loop[i])
 				{
-					cout << *v_loop[i] << " is from vertex" << endl;
+					// cout << *v_loop[i] << " is from vertex" << endl;
 					he1 = e->halfEdge();
 					he2 = e->halfEdge()->pair();
 				}
 				else
 				{
-					cout << *v_loop[i] << " is to vertex" << endl;
+					// cout << *v_loop[i] << " is to vertex" << endl;
 					he1 = e->halfEdge()->pair();
 					he2 = e->halfEdge();
 				}
@@ -644,22 +645,24 @@ namespace acamcad
 				{
 					he_ip = vec_edges[i];
 					he_in = vec_edges[ii];
-					cout << *v_loop[i] << " " << *v_loop[ii] << " inner links=" << *he_ip << " " << *he_in << endl;
+					// cout << *v_loop[i] << " " << *v_loop[ii] << " inner links=" << *he_ip << " " << *he_in << endl;
 					if (he_ip->next() != he_in)
 					{
-						cout << "patch re-linking......" << endl;
-						cout << "inner links=" << *he_ip << " " << *he_in << " " << *v_loop[i] << " he_ip->next=" << *he_ip->next() << endl;
+						// cout << "patch re-linking......" << endl;
+						// cout << "inner links=" << *he_ip << " " << *he_in << " " << *v_loop[i]
+						// 	 << " he_ip->next=" << *he_ip->next()
+						// 	 << " he_in->prev=" << *he_in->prev() << endl;
 						he_op = he_in->pair();
 						he_on = he_ip->pair();
-						cout << " outer links=" << *he_op << " " << *he_on << " ";
+						// cout << " outer links=" << *he_op << " " << *he_on << " ";
 						he_bp = he_op;
 						do
 						{
 							he_bp = he_bp->next()->pair();
-							cout << *he_bp << " ";
+							// cout << *he_bp << " ";
 						} while (!he_bp->isBoundary());
 						he_bn = he_bp->next();
-						cout << " finally " << *he_bn << endl;
+						// cout << " finally " << *he_bn << endl;
 						//// ok ?
 						//if (boundary_prev == inner_prev)
 						//{
@@ -672,6 +675,7 @@ namespace acamcad
 
 						MHalfedge *patch_start = he_ip->next();
 						MHalfedge *patch_end = he_in->prev();
+						// cout << "patch_start=" << *patch_start << " patch_end=" << *patch_end << endl;
 
 						he_bp->setNext(patch_start);
 						patch_start->setPrev(he_bp);
@@ -683,7 +687,7 @@ namespace acamcad
 				}
 			}
 
-			cout << "set outer links..." << endl;
+			// cout << "set outer links..." << endl;
 			for (size_t i = 0; i < v_size; i++)
 			{
 				size_t i1 = (i + 1) % v_size;
@@ -705,14 +709,14 @@ namespace acamcad
 				{
 					MHalfedge *he_op = he_in->pair(); // out previous
 					MHalfedge *he_on = he_ip->pair(); // out next
-					cout << "he_ip=" << *he_ip << " he_in=" << *he_in << " he_op=" << *he_op << " he_on=" << *he_on << endl;
+					// cout << "he_ip=" << *he_ip << " he_in=" << *he_in << " he_op=" << *he_op << " he_on=" << *he_on << endl;
 
 					// set outer links
 					switch (id)
 					{
 					case 1: // prev is new, next is old
 					{
-						cout << *vh << " prev " << *he_ip << " is new, next " << *he_in << " is old" << endl;
+						// cout << *vh << " prev " << *he_ip << " is new, next " << *he_in << " is old" << endl;
 						he_bp = he_in->prev();
 						he_bp->setNext(he_on);
 						he_on->setPrev(he_bp);
@@ -721,7 +725,7 @@ namespace acamcad
 					}
 					case 2: // next is new, prev is old
 					{
-						cout << *vh << " prev " << *he_ip << " is old, next " << *he_in << " is new" << endl;
+						// cout << *vh << " prev " << *he_ip << " is old, next " << *he_in << " is new" << endl;
 						he_bn = he_ip->next();
 						he_op->setNext(he_bn);
 						he_bn->setPrev(he_op);
@@ -732,7 +736,7 @@ namespace acamcad
 					case 3: // both are new
 						if (vh->halfEdge() == nullptr)
 						{
-							cout << *vh << " is null, both edges are new" << endl;
+							// cout << *vh << " is null, both edges are new" << endl;
 							vh->setHalfedge(he_on);
 							he_op->setNext(he_on);
 							he_on->setPrev(he_op);
@@ -746,7 +750,7 @@ namespace acamcad
 							he_on->setPrev(he_bp);
 							he_op->setNext(he_bn);
 							he_bn->setPrev(he_op);
-							cout << *vh << " is not null, both edges are new" << endl;
+							// cout << *vh << " is not null, both edges are new" << endl;
 						}
 						break;
 					}
@@ -756,8 +760,8 @@ namespace acamcad
 				}
 				else
 				{
-					cout << "both edges are old " << *he_ip << " " << *he_in << " " << *v_loop[i] << " " << *v_loop[i1]
-						 << " he_ip->next" << *he_ip->next() << " he_in->prev()" << *he_in->prev() << endl;
+					// cout << "both edges are old " << *he_ip << " " << *he_in << " " << *v_loop[i] << " " << *v_loop[i1]
+					// 	 << " he_ip->next" << *he_ip->next() << " he_in->prev()" << *he_in->prev() << endl;
 
 					he_ip->setNext(he_in);
 					he_in->setPrev(he_ip);
@@ -769,7 +773,7 @@ namespace acamcad
 			{
 				if (is_needc[i])
 				{
-					cout << "adjustOutgoingHalfedge " << *v_loop[i] << endl;
+					// cout << "adjustOutgoingHalfedge " << *v_loop[i] << endl;
 					v_loop[i]->adjustOutgoingHalfedge();
 				}
 			}
@@ -1023,6 +1027,9 @@ namespace acamcad
 		}
 		void PolyMesh::deleteEdge_fromMesh(MEdge *edge)
 		{
+			// how to delete an element from vector?
+			// swap toBeDeleted element with vector's last element
+			// vector.pop_back()
 			assert(edge->index() < edges_.size());
 			assert(edge == edges_[edge->index()]);
 
@@ -2088,6 +2095,23 @@ namespace acamcad
 
 		MVert *PolyMesh::splitEdgeTriangle(MEdge *edge)
 		{
+			// split adjacent face into two
+			// non-boundary edge: 2 faces --split--> 4 faces
+			// boundary edge: 1 face --split--> 2 faces
+
+			// non-boundary edge:
+			// split edge's first adjacent face (he0->he2->he3)
+			//     newVertex vt, f0 = he0->polygon()
+			//     --> newEdge (het0, het1) along edge's first halfedge (he0), change edge's second halfedge(he1)'s starting vertex to vt
+			//     --> newEdge (hef0, hef1) from vt to he0's next toVertex()
+			//     --> newFace (f1) --> build faces
+			//          set he0, hef0, he3's face as f0, set het0, he2, hef1's face as f1
+			//          build links for f0, f1
+			// split edge's second adjacent face
+			// ...
+			// boundary edge:
+			// split non-boundary halfedge's face as above, adjust boundary halfedge's starting vertex and linkage
+			using namespace std;
 			MHalfedge *he0 = edge->halfEdge();
 			MHalfedge *he1 = he0->pair();
 
@@ -2101,6 +2125,7 @@ namespace acamcad
 #else
 			if (!he0->isBoundary())
 			{
+				// split edge's first adjacent face
 				MPolyFace *f0 = he0->polygon();
 				if (f0->PolyNum() != 3)
 				{
@@ -2250,6 +2275,7 @@ namespace acamcad
 
 		void PolyMesh::collpaseEdge(MHalfedge *he)
 		{
+			// #faces-->edge collapse-->#faces-2
 			MHalfedge *he0 = he;
 			MHalfedge *he0_next = he->next();
 			MHalfedge *he0_prev = he->prev();
@@ -2264,12 +2290,14 @@ namespace acamcad
 			MVert *vb = he0->fromVertex();
 			MVert *ve = he0->toVertex();
 
+			// change vb's all outgoing halfedge's begin vertex as ve
 			std::vector<MHalfedge *> vbhe = vertAdjacentHalfEdge(vb);
 			for (size_t i = 0; i < vbhe.size(); i++)
 			{
 				vbhe[i]->setVert(ve);
 			}
 
+			// make toBeDeleted halfedges's linkage as loop
 			he0_prev->setNext(he0_next);
 			he0_next->setPrev(he0_prev);
 			he1_prev->setNext(he1_next);
@@ -2298,6 +2326,8 @@ namespace acamcad
 
 		void PolyMesh::collpaseLoop(MHalfedge *he)
 		{
+			// change he's linkage, its next, prev
+			// destroy looped face
 			MHalfedge *he0 = he;
 			MHalfedge *he1 = he0->next();
 

@@ -227,14 +227,14 @@ file (GLOB HW9_FILE
 )
 
 # Add an executable with the above sources
-add_executable(${PROJECT_NAME}_HW9 ${HW9_FILE})
-target_include_directories(${PROJECT_NAME}_HW9
+add_executable(hw9 ${HW9_FILE})
+target_include_directories(hw9
     PRIVATE 
         ${PROJECT_SOURCE_DIR}/include
         ${EIGEN_PATH}
 )
 
-target_link_libraries(${PROJECT_NAME}_HW9
+target_link_libraries(hw9
     PRIVATE 
         ACAM_mesh
 )

@@ -75,8 +75,9 @@ void testThreeTriangles()
 	delete (mesh);
 }
 
-void testThreeTrianglesPatchingLink()
+void testFourTrianglesPatchingLink()
 {
+	using namespace std;
 	PolyMesh *mesh = new PolyMesh();
 
 	auto v0 = mesh->addVertex(0, 0, 0);
@@ -84,20 +85,55 @@ void testThreeTrianglesPatchingLink()
 	auto v2 = mesh->addVertex(1, 1, 0);
 	auto v3 = mesh->addVertex(0, 1, 0);
 	auto v4 = mesh->addVertex(1, 2, 0);
+	auto v5 = mesh->addVertex(-1, 0, 0);
 
-	std::vector<MVert *> vertlist, vertlist1, vertlist2;
+	std::vector<MVert *> vertlist, vertlist1, vertlist2, vertlist3;
+
 	vertlist.push_back(v0);
 	vertlist.push_back(v1);
 	vertlist.push_back(v2);
+
+	vertlist1.push_back(v3);
 	vertlist1.push_back(v2);
 	vertlist1.push_back(v4);
-	vertlist1.push_back(v3);
-	vertlist2.push_back(v0);
-	vertlist2.push_back(v2);
+
+	vertlist2.push_back(v5);
 	vertlist2.push_back(v3);
+	vertlist2.push_back(v0);
+
+	vertlist3.push_back(v0);
+	vertlist3.push_back(v2);
+	vertlist3.push_back(v3);
+
 	auto f0 = mesh->addPolyFace(vertlist);
 	auto f1 = mesh->addPolyFace(vertlist1);
 	auto f2 = mesh->addPolyFace(vertlist2);
+	auto f3 = mesh->addPolyFace(vertlist3);
+
+	std::vector<std::vector<MVert *>> boundaries;
+	std::map<MHalfedge *, bool> isVisit;
+	for (MHalfedge *he : mesh->halfEdges())
+	{
+		if (he->isBoundary() && !isVisit[he])
+		{
+			cout << "boundary" << boundaries.size() << endl;
+			boundaries.push_back(std::vector<MVert *>());
+			std::vector<MVert *> &boundary_part = boundaries[boundaries.size() - 1];
+			{
+				MHalfedge *cur = he;
+				cout << *cur << " ";
+				do
+				{
+					boundary_part.push_back(cur->toVertex());
+					cur = cur->next();
+					cout << *cur << " ";
+					isVisit[cur] = true;
+				} while (cur != he);
+			}
+			cout << endl;
+		}
+	}
+	// auto f3 = mesh->addPolyFace(vertlist3);
 
 	writeMesh("output/triangle.obj", mesh);
 	delete (mesh);
@@ -216,7 +252,7 @@ void exampleCollapseTriangle()
 	MEdge *e34 = mesh->edgeBetween(v4, v3);
 	MVert *v5 = mesh->splitEdgeTriangle(e34);
 	v5->setPosition(0.6, 0.6, 0.1);
-	writeMesh("collapse_before.obj", mesh);
+	writeMesh("output/collapse_before.obj", mesh);
 
 	//MHalfedge* he54 = mesh->halfedgeBetween(v5, v4);
 	//mesh->collapseTriangle(he54);
@@ -224,7 +260,7 @@ void exampleCollapseTriangle()
 
 	MHalfedge *he45 = mesh->halfedgeBetween(v4, v5);
 	mesh->collapseTriangle(he45);
-	writeMesh("collapse_after.obj", mesh);
+	writeMesh("output/collapse_after.obj", mesh);
 	delete (mesh);
 }
 
@@ -332,11 +368,11 @@ int main()
 	// testBasicTriangle();
 	// testTwoTriangles();
 	// testThreeTriangles();
-	// testThreeTrianglesPatchingLink();
+	// testFourTrianglesPatchingLink();
 
-	//mesh load an write , now only support obj/off
-	PolyMesh *mesh = new PolyMesh();
-	loadMesh("example/hw1/alien.obj", mesh);
+	// // mesh load an write , now only support obj/off
+	// PolyMesh *mesh = new PolyMesh();
+	// loadMesh("example/hw1/alien.obj", mesh);
 	// writeMesh("triangle.obj", mesh);
 	// //you can also use the IO option such as
 	// IOOptions opt;
@@ -344,19 +380,19 @@ int main()
 	// loadMesh("triangle.obj", mesh, opt);
 	// writeMesh("triangle.obj", mesh, opt);
 
-	// //using iter to operating mesh;
-	// exampleMeshIter(mesh);
+	// // using iter to operating mesh;
+	//  exampleMeshIter(mesh);
 	// //using index to operating mesh;
 	// exampleMeshTraverse(mesh);
 
-	//example for split e triangle mesh edge
+	// //example for split e triangle mesh edge
 	// exampleSplitTriangle();
 
 	// //example for flip e triangle mesh edge
 	// exampleFlipTriangle();
 
-	// //example for collapse e triangle mesh edge
-	// exampleCollapseTriangle();
+	//example for collapse e triangle mesh edge
+	exampleCollapseTriangle();
 }
 
 //int main()
