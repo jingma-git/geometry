@@ -8,6 +8,8 @@
 
 using namespace acamcad;
 using namespace polymesh;
+using namespace std;
+// Quadratic Error Metric measure the 'new point''s distance to sets of planes defined by collapsed edge vertices
 
 struct Edge_priority
 {
@@ -124,8 +126,8 @@ void cal_Cost(MEdge *eh)
 	else
 	{
 		Eigen::Vector4d temp = {0.0, 0.0, 0.0, 1.0};
-		new_vec = Q_solve.inverse() * temp;
-		new_point = {new_vec[0], new_vec[1], new_vec[2]};
+		new_vec = Q_solve.inverse() * temp;				  // (minimize(XT * Q * X))  == (solve AX=0) (taking derivatives)
+		new_point = {new_vec[0], new_vec[1], new_vec[2]}; // the new point is the one have minimum distance to sets of planes defined by collapsed edges
 	}
 	temp.cost = new_vec.transpose() * Q_plus * new_vec;
 	temp.eh = eh;
@@ -202,6 +204,8 @@ void QEM(PolyMesh *mesh)
 				p = {a, b, c, d};
 				Q_temp += p * p.transpose();
 			}
+			// Eigen::Vector4d x(p_vh[0], p_vh[1], p_vh[2], 1);
+			// cout << *vh << " " << x.transpose() * Q_temp * x << endl;
 			Qv.insert(std::make_pair(vh, Q_temp));
 		}
 		else
@@ -258,6 +262,7 @@ void QEM(PolyMesh *mesh)
 	{
 		Edge_priority temp_edge = Cost.top();
 		Cost.pop();
+		cout << N_V << " cost=" << temp_edge.cost << endl;
 		MEdge *eh = temp_edge.eh;
 		if (temp_edge.state == State[eh])
 		{
@@ -274,26 +279,25 @@ void QEM(PolyMesh *mesh)
 
 int main(int argc, const char **argv)
 {
-	if (argc != 3)
-	{
-		std::cout << "========== Hw9 Usage  ==========\n";
-		std::cout << std::endl;
-		std::cout << "Input:	ACAM_mesh_HW9.exe	input_mesh.obj	output_mesh.obj\n";
-		std::cout << std::endl;
-		std::cout << "=================================================\n";
-		return 1;
-	}
+	// if (argc != 3)
+	// {
+	// 	std::cout << "========== Hw9 Usage  ==========\n";
+	// 	std::cout << std::endl;
+	// 	std::cout << "Input:	./ACAM_mesh_HW9	input_mesh.obj	output_mesh.obj\n";
+	// 	std::cout << std::endl;
+	// 	std::cout << "=================================================\n";
+	// 	return 1;
+	// }
 
-	//��������
-	std::string mesh_path = argv[1];
-	PolyMesh *mesh = new PolyMesh();
-	loadMesh(mesh_path, mesh);
+	// std::string mesh_path = argv[1];
+	// PolyMesh *mesh = new PolyMesh();
+	// loadMesh(mesh_path, mesh);
 
-	std::string out_path = argv[2];
+	// std::string out_path = argv[2];
 
 	// read input mesh
-	//PolyMesh* mesh = new PolyMesh();
-	//loadMesh("cat_open.obj", mesh);
+	PolyMesh *mesh = new PolyMesh();
+	loadMesh("example/hw9/dragon.obj", mesh);
 
 	clock_t start, end;
 	std::cout << "Begin QEM" << std::endl;
@@ -301,6 +305,7 @@ int main(int argc, const char **argv)
 	QEM(mesh);
 	end = clock();
 	std::cout << "time: " << (double)(end - start) / CLOCKS_PER_SEC << "s" << std::endl;
-	writeMesh(out_path, mesh);
+	// writeMesh(out_path, mesh);
+	writeMesh("output/dragon_simp.obj", mesh);
 	return 0;
 }
