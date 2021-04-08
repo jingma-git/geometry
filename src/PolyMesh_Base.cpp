@@ -7,6 +7,7 @@ namespace acamcad
 
 		void MVert::adjustOutgoingHalfedge()
 		{
+			using namespace std;
 			if (isIsolated())
 				return;
 
@@ -15,8 +16,10 @@ namespace acamcad
 
 			do
 			{
+				// cout << *he << endl;
 				if (he->isBoundary())
 				{
+					// cout << "set halfedge" << endl;
 					setHalfedge(he);
 					return;
 				}
