@@ -133,15 +133,15 @@ void exampleSplitTriangle()
 	vertlist.push_back(v3);
 	vertlist.push_back(v2);
 	MPolyFace *p1 = mesh->addPolyFace(vertlist);
-	writeMesh("split_before.obj", mesh);
+	writeMesh("output/split_before.obj", mesh);
 
 	MEdge *e12 = mesh->edgeBetween(v1, v2); //get the edge between to vertex
 	MVert *v4 = mesh->splitEdgeTriangle(e12);
 	v4->setPosition(0.5, 0.6, 0.1);
 
-	MEdge *e10 = mesh->edgeBetween(v0, v1);
-	MVert *v5 = mesh->splitEdgeTriangle(e10);
-	writeMesh("split_after.obj", mesh);
+	// MEdge *e10 = mesh->edgeBetween(v0, v1);
+	// MVert *v5 = mesh->splitEdgeTriangle(e10);
+	writeMesh("output/split_after.obj", mesh);
 	delete (mesh);
 }
 
@@ -349,7 +349,7 @@ int main()
 	// //using index to operating mesh;
 	// exampleMeshTraverse(mesh);
 
-	// //example for split e triangle mesh edge
+	//example for split e triangle mesh edge
 	// exampleSplitTriangle();
 
 	// //example for flip e triangle mesh edge

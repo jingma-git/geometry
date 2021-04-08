@@ -598,19 +598,19 @@ namespace acamcad
 			for (size_t i = 0; i < v_size; i++)
 			{
 				size_t i1 = (i + 1) % v_size;
-				// cout << *v_loop[i] << "->" << *v_loop[i1] << endl;
+				cout << *v_loop[i] << "->" << *v_loop[i1] << endl;
 
 				MEdge *e = edgeBetween(v_loop[i], v_loop[i1]);
 				if (e == nullptr)
 				{
 					e = addEdge(v_loop[i], v_loop[i1]);
 					is_edge_new[i] = true;
-					// cout << "add new edge " << *e->halfEdge() << " " << *e->halfEdge()->pair() << " | " << *e << endl;
+					cout << "add new edge " << *e->halfEdge() << " " << *e->halfEdge()->pair() << " | " << *e << endl;
 				}
-				// else
-				// {
-				// 	cout << "find old edge " << *e->halfEdge() << " " << *e->halfEdge()->pair() << " | " << *e << endl;
-				// }
+				else
+				{
+					cout << "find old edge " << *e->halfEdge() << " " << *e->halfEdge()->pair() << " | " << *e << endl;
+				}
 
 				if (e->halfEdge()->fromVertex() == v_loop[i])
 				{
@@ -681,7 +681,7 @@ namespace acamcad
 				}
 			}
 
-			// cout << "set outer links..." << endl;
+			cout << "set outer links..." << endl;
 			for (size_t i = 0; i < v_size; i++)
 			{
 				size_t i1 = (i + 1) % v_size;
@@ -703,14 +703,14 @@ namespace acamcad
 				{
 					MHalfedge *he_op = he_in->pair(); // out previous
 					MHalfedge *he_on = he_ip->pair(); // out next
-					// cout << "he_ip=" << *he_ip << " he_in=" << *he_in << " he_op=" << *he_op << " he_on=" << *he_on << endl;
+					cout << "he_ip=" << *he_ip << " he_in=" << *he_in << " he_op=" << *he_op << " he_on=" << *he_on << endl;
 
 					// set outer links
 					switch (id)
 					{
 					case 1: // prev is new, next is old
 					{
-						// cout << *vh << " prev " << *he_ip << " is new, next " << *he_in << " is old" << endl;
+						cout << *vh << " prev " << *he_ip << " is new, next " << *he_in << " is old" << endl;
 						he_bp = he_in->prev();
 						he_bp->setNext(he_on);
 						he_on->setPrev(he_bp);
@@ -719,7 +719,7 @@ namespace acamcad
 					}
 					case 2: // next is new, prev is old
 					{
-						// cout << *vh << " prev " << *he_ip << " is old, next " << *he_in << " is new" << endl;
+						cout << *vh << " prev " << *he_ip << " is old, next " << *he_in << " is new" << endl;
 						he_bn = he_ip->next();
 						he_op->setNext(he_bn);
 						he_bn->setPrev(he_op);
@@ -730,7 +730,7 @@ namespace acamcad
 					case 3: // both are new
 						if (vh->halfEdge() == nullptr)
 						{
-							// cout << *vh << " is null, both edges are new" << endl;
+							cout << *vh << " is null, both edges are new" << endl;
 							vh->setHalfedge(he_on);
 							he_op->setNext(he_on);
 							he_on->setPrev(he_op);
@@ -744,7 +744,7 @@ namespace acamcad
 							he_on->setPrev(he_bp);
 							he_op->setNext(he_bn);
 							he_bn->setPrev(he_op);
-							// cout << *vh << " is not null, both edges are new" << endl;
+							cout << *vh << " is not null, both edges are new" << endl;
 						}
 						break;
 					}
@@ -754,7 +754,9 @@ namespace acamcad
 				}
 				else
 				{
-					cout << "both edges are old" << endl;
+					cout << "both edges are old " << *he_ip << " " << *he_in << " " << *v_loop[i] << " " << *v_loop[i1]
+						 << " he_ip->next" << *he_ip->next() << " he_in->prev()" << *he_in->prev() << endl;
+
 					he_ip->setNext(he_in);
 					he_in->setPrev(he_ip);
 					is_needc[i1] = true;
@@ -765,6 +767,7 @@ namespace acamcad
 			{
 				if (is_needc[i])
 				{
+					cout << "adjustOutgoingHalfedge " << *v_loop[i] << endl;
 					v_loop[i]->adjustOutgoingHalfedge();
 				}
 			}
@@ -2695,4 +2698,4 @@ namespace acamcad
 		}
 
 	} //namespace polymesh
-} //namespaec acamcad
+} // namespace acamcad
