@@ -614,11 +614,13 @@ namespace acamcad
 
 				if (e->halfEdge()->fromVertex() == v_loop[i])
 				{
+					cout << *v_loop[i] << " is from vertex" << endl;
 					he1 = e->halfEdge();
 					he2 = e->halfEdge()->pair();
 				}
 				else
 				{
+					cout << *v_loop[i] << " is to vertex" << endl;
 					he1 = e->halfEdge()->pair();
 					he2 = e->halfEdge();
 				}
@@ -642,11 +644,11 @@ namespace acamcad
 				{
 					he_ip = vec_edges[i];
 					he_in = vec_edges[ii];
-
+					cout << *v_loop[i] << " " << *v_loop[ii] << " inner links=" << *he_ip << " " << *he_in << endl;
 					if (he_ip->next() != he_in)
 					{
 						cout << "patch re-linking......" << endl;
-						cout << "inner links=" << *he_ip << " " << *he_in << " " << *v_loop[i] << endl;
+						cout << "inner links=" << *he_ip << " " << *he_in << " " << *v_loop[i] << " he_ip->next=" << *he_ip->next() << endl;
 						he_op = he_in->pair();
 						he_on = he_ip->pair();
 						cout << " outer links=" << *he_op << " " << *he_on << " ";
