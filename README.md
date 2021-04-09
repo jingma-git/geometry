@@ -1,7 +1,11 @@
 # A implementation of course "Digital Geometry Precessing" With ACAM Framework
 
 ## ToDO:
+How to find the light direction given an image: n.dot(light) = diffuse
+
 implement face-based style laplace operator and compare with halfedge-style (one-ring) based implementation
+
+implement direct laplace smooth and implicit laplace smooth
 
 cal edge cot
 for f in faces:
@@ -10,7 +14,18 @@ for f in faces:
         L(v1, v1) -= cot(f, e01)
         L(v0, v1) += cot(f, e01)
         L(v1, v0) += cot(f, e10)
+
+## Implicit Laplace Smoothing
+```
+du / dt = L * u
+
+u(t+1) - u(t) = L * u(t+1)
+
+so, solve (I-L)* u(t+1) = u(t)
+```
+
 ## Skeleton Extraction by Mesh Contraction
+Derive shape cost K by hand
 
 ## Q-MAT: Computing Medial Axis Transform by Quadratic Error Minimization
 
