@@ -8,6 +8,7 @@ using namespace polymesh;
 
 MVector3 cal_circum_enter(const MVector3 &a, const MVector3 &b, const MVector3 &c)
 {
+	// https://gamedev.stackexchange.com/questions/60630/how-do-i-find-the-circumcenter-of-a-triangle-in-3d
 	MVector3 ac = c - a, ab = b - a;
 	MVector3 abXac = cross(ab, ac), abXacXab = cross(abXac, ab), acXabXac = cross(ac, abXac);
 	return a + (abXacXab * ac.normSq() + acXabXac * ab.normSq()) / (2.0 * abXac.normSq());
@@ -15,6 +16,7 @@ MVector3 cal_circum_enter(const MVector3 &a, const MVector3 &b, const MVector3 &
 
 void cal_local_ave_region(PolyMesh *const mesh, std::vector<double> &vertexLAR)
 {
+	// Mixed Voronoi: edgemid point for obtuse triangle, circumcenter for usual triangle
 	for (MPolyFace *fh : mesh->polyfaces())
 	{
 		// judge if it's obtuse
@@ -23,27 +25,29 @@ void cal_local_ave_region(PolyMesh *const mesh, std::vector<double> &vertexLAR)
 		MHalfedge *he = fh->halfEdge();
 		MHalfedge *he_next = he->next(), *he_prev = he->prev();
 		MVert *v_from_he = he->fromVertex(), *v_from_he_next = he_next->fromVertex(), *v_from_he_prev = he_prev->fromVertex();
+		MVert *v0 = he->fromVertex(), *v1 = he_next->fromVertex(), *v2 = he_prev->fromVertex();
 		MVector3 vec_he_nor = he->tangent(), vec_he_next_nor = he_next->tangent(), vec_he_prev_nor = he_prev->tangent();
-		if (vectorAngle(vec_he_nor, -vec_he_prev_nor) > PI / 2.0)
+		MVector3 v01 = he->tangent(), v12 = he_next->tangent(), v20 = he_prev->tangent();
+		if (vectorAngle(v01, -v20) > PI / 2.0)
 		{
 			isObtuseAngle = true;
-			obtuseVertexHandle = v_from_he;
+			obtuseVertexHandle = v0;
 		}
-		else if (vectorAngle(vec_he_next_nor, -vec_he_nor) > PI / 2.0)
+		else if (vectorAngle(v12, -v01) > PI / 2.0)
 		{
 			isObtuseAngle = true;
-			obtuseVertexHandle = v_from_he_next;
+			obtuseVertexHandle = v1;
 		}
-		else if (vectorAngle(vec_he_prev_nor, -vec_he_next_nor) > PI / 2.0)
+		else if (vectorAngle(v20, -v12) > PI / 2.0)
 		{
 			isObtuseAngle = true;
-			obtuseVertexHandle = v_from_he_prev;
+			obtuseVertexHandle = v2;
 		}
 
 		// calculate area
 		if (isObtuseAngle)
 		{
-			double faceArea = 0.5 * norm(cross(v_from_he_next->position() - v_from_he->position(), v_from_he_prev->position() - v_from_he->position()));
+			double faceArea = 0.5 * norm(cross(v1->position() - v0->position(), v2->position() - v0->position()));
 			for (MVert *fv : mesh->polygonVertices(fh))
 			{
 				if (fv == obtuseVertexHandle)
@@ -54,7 +58,7 @@ void cal_local_ave_region(PolyMesh *const mesh, std::vector<double> &vertexLAR)
 		}
 		else
 		{
-			MVector3 cc = cal_circum_enter(v_from_he->position(), v_from_he_next->position(), v_from_he_prev->position());
+			MVector3 cc = cal_circum_enter(v0->position(), v1->position(), v2->position());
 			for (MHalfedge *fhh : mesh->polygonHalfedges(fh))
 			{
 				MVector3 edgeMidpoint = 0.5 * (fhh->fromVertex()->position() + fhh->toVertex()->position());
@@ -153,18 +157,17 @@ void testBasicTriangle()
 
 int main(int argc, char **argv)
 {
-	if (argc != 2)
-	{
-		std::cout << "========== Hw2 Usage  ==========\n";
-		std::cout << std::endl;
-		std::cout << "Input:	ACAM_mesh_HW2.exe	mesh.obj\n";
-		std::cout << std::endl;
-		std::cout << "=================================================\n";
-		return 1;
-	}
+	// if (argc != 2)
+	// {
+	// 	std::cout << "========== Hw2 Usage  ==========\n";
+	// 	std::cout << std::endl;
+	// 	std::cout << "Input:	ACAM_mesh_HW2.exe	mesh.obj\n";
+	// 	std::cout << std::endl;
+	// 	std::cout << "=================================================\n";
+	// 	return 1;
+	// }
 
-	//��������
-	std::string mesh_path = argv[1];
+	std::string mesh_path = "example/hw2/PumpkinMesh.obj"; // argv[1];
 	PolyMesh *mesh = new PolyMesh();
 	loadMesh(mesh_path, mesh);
 	//create a basic mesh
