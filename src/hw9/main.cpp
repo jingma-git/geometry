@@ -257,7 +257,7 @@ void QEM(PolyMesh *mesh)
 
 	/// simplification
 	int N_V = mesh->numVertices();
-	int target_num = std::min((int)(0.5 * N_V), 1000);
+	int target_num = std::min((int)(0.5 * N_V), 100);
 	while (N_V > target_num)
 	{
 		Edge_priority temp_edge = Cost.top();
