@@ -320,3 +320,25 @@ target_link_libraries(hw9
 #     PRIVATE 
 #         ACAM_mesh
 # )
+
+
+############################################################
+# Project 14 
+############################################################
+
+file (GLOB HW14_FILE
+    src/mesh_contract/*.cpp
+)
+
+# Add an executable with the above sources
+add_executable(contract ${HW14_FILE})
+target_include_directories(contract
+    PRIVATE 
+        ${PROJECT_SOURCE_DIR}/include
+        ${EIGEN_PATH}
+)
+
+target_link_libraries(contract
+    PRIVATE 
+        ACAM_mesh
+)
