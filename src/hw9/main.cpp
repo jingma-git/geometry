@@ -1,4 +1,5 @@
 #include <PolyMesh/IOManager.h>
+#include <cotmatrix.h>
 #include <Eigen/Dense>
 #include <queue>
 #include <map>
