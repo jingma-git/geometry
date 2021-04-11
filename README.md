@@ -5,17 +5,29 @@ How to find the light direction given an image: n.dot(light) = diffuse
 
 implement direct laplace smooth and implicit laplace smooth
 
-## Implicit Laplace Smoothing
+
+
+## Skeleton Extraction by Mesh Contraction
+Derive shape cost K by hand
+
+### Implicit Laplace Smoothing
+Let the vertex flow into mean-curvature normal.
 ```
 du / dt = L * u
-
 u(t+1) - u(t) = L * u(t+1)
 
 so, solve (I-L)* u(t+1) = u(t)
 ```
-
-## Skeleton Extraction by Mesh Contraction
-Derive shape cost K by hand
+Implementation
+```
+// M: mass matrix, Lcot: cotmatrix, L: laplace matrix, L = Minv * Lcot
+// (I-L) * u(t+1) = u(t)
+// (I-Minv*Lcot) * u(t+1) = u(t)
+// (M - Lcot) * u(t+1) = u(t)
+// so solve: (M - Lcot) * u(t+1) = u(t)
+```
+### How to dervie point-to-edge distance Matrix Kij?
+ToDO: validate in code
 
 ## Q-MAT: Computing Medial Axis Transform by Quadratic Error Minimization
 
@@ -82,7 +94,7 @@ This is a visulization of [gradient field on triangle mesh](https://math.stackex
 ## Video Link
 https://www.bilibili.com/video/BV1B54y1B7Uc
 
-## Design Principles
+## Design Principles and Code Style
 * [Libigl](https://libigl.github.io/)
 * Basic type such as vec, matrix must follow Eigen's API
 ## External Libraries

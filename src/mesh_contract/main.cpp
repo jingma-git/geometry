@@ -6,6 +6,7 @@
 #include <PolyMesh/IOManager.h>
 #include <cotmatrix.h>
 #include <massmatrix.h>
+#include <invert_diag.h>
 #include <writeSMAT.h>
 #include <readSMAT.h>
 #include <test_data.h>
@@ -115,8 +116,37 @@ void testMassMatrix()
     egl::writeSMAT("output/mass_bary.smat", Mbary);
 }
 
+void testLaplace()
+{
+    PolyMesh mesh;
+    egl::test_mesh0(mesh);
+
+    SparseMatrix<double> L, M, Minv;
+    egl::cotmatrix(mesh, L);
+    egl::massmatrix_mixed_voronoi(mesh, M);
+    egl::invert_diag(M, Minv);
+    cout << "L\n"
+         << L.toDense() << endl;
+    cout << "M\n"
+         << M.toDense() << endl;
+    cout << "laplace\n"
+         << (Minv * L).toDense() << endl;
+}
+
+void testCot()
+{
+    double ang = 1e-8;
+    double step = M_PI / 300;
+    int i = 0;
+    while (ang <= M_PI - 1e-8)
+    {
+        cout << i << ": " << ang << " " << std::cos(ang) / std::sin(ang) << endl;
+        ang += step;
+        i++;
+    }
+}
 int main()
 {
-    testMassMatrix();
+    testCot();
     return 0;
 }
