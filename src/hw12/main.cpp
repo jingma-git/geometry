@@ -48,6 +48,14 @@ MPoint3 get_TriFace_Circumcenter(MPolyFace *f)
 	return circumcenter;
 }
 
+MVector3 cal_circum_enter(const MVector3 &a, const MVector3 &b, const MVector3 &c)
+{
+	// https://gamedev.stackexchange.com/questions/60630/how-do-i-find-the-circumcenter-of-a-triangle-in-3d
+	MVector3 ac = c - a, ab = b - a;
+	MVector3 abXac = cross(ab, ac), abXacXab = cross(abXac, ab), acXabXac = cross(ac, abXac);
+	return a + (abXacXab * ac.normSq() + acXabXac * ab.normSq()) / (2.0 * abXac.normSq());
+}
+
 void Optimal_Delaunay_Trianglation(int iter_num)
 {
 	int k = 0;
@@ -67,8 +75,15 @@ void Optimal_Delaunay_Trianglation(int iter_num)
 			MPoint3 v4 = he3->toVertex()->position();
 
 			double alpha(0.0), alpha1(0.0), alpha2(0.0);
-			alpha1 = acos((pow((v1 - v3).norm(), 2) + pow((v2 - v3).norm(), 2) - pow((v1 - v2).norm(), 2)) / (2 * (v1 - v3).norm() * (v2 - v3).norm()));
-			alpha2 = acos((pow((v1 - v4).norm(), 2) + pow((v2 - v4).norm(), 2) - pow((v1 - v2).norm(), 2)) / (2 * (v1 - v4).norm() * (v2 - v4).norm()));
+			double e31 = (v1 - v3).norm();
+			double e32 = (v2 - v3).norm();
+			double e41 = (v1 - v4).norm();
+			double e42 = (v2 - v4).norm();
+			if (e31 * e32 < 1e-14 || e41 * e42 < 1e-14)
+				continue;
+			alpha1 = acos((pow(e31, 2) + pow(e32, 2) - pow((v1 - v2).norm(), 2)) / (2 * e31 * e32));
+
+			alpha2 = acos((pow(e41, 2) + pow(e42, 2) - pow((v1 - v2).norm(), 2)) / (2 * e41 * e42));
 			alpha = alpha1 + alpha2;
 			if (alpha > M_PI)
 				mesh->flipEdgeTriangle(*e_it);
@@ -84,31 +99,38 @@ void Optimal_Delaunay_Trianglation(int iter_num)
 			{
 				area = get_TriFace_Area(*vf_it);
 				sum_area += area;
+				// MPolyFace *face = (*vf_it);
+				// MHalfedge *fh0 = face->halfEdge();
+				// MHalfedge *fh1 = face->halfEdge()->prev();
+				// MVector3 center = cal_circum_enter(fh0->fromVertex()->position(), fh0->toVertex()->position(), fh1->fromVertex()->position());
 				MPoint3 center = get_TriFace_Circumcenter(*vf_it);
 				tmp = tmp + area * center;
 			}
-			(*v_it)->setPosition(tmp / sum_area);
+			std::cout << (*v_it) << " sum_area=" << sum_area << std::endl;
+			if (abs(sum_area) > 1e-8)
+				(*v_it)->setPosition(tmp / sum_area);
 		}
 	}
 }
 
-int main(int argc, char **argv)
+int main(/*int argc, char **argv*/)
 {
-	if (argc != 3)
-	{
-		std::cout << "========== Hw12 Usage  ==========\n";
-		std::cout << std::endl;
-		std::cout << "Input:	ACAM_mesh_HW12.exe	input_mesh.obj	output_mesh.obj\n";
-		std::cout << std::endl;
-		std::cout << "=================================================\n";
-		return 1;
-	}
+	// if (argc != 3)
+	// {
+	// 	std::cout << "========== Hw12 Usage  ==========\n";
+	// 	std::cout << std::endl;
+	// 	std::cout << "Input:	ACAM_mesh_HW12.exe	input_mesh.obj	output_mesh.obj\n";
+	// 	std::cout << std::endl;
+	// 	std::cout << "=================================================\n";
+	// 	return 1;
+	// }
 
 	mesh = new PolyMesh();
-	//��������
-	std::string mesh_path = argv[1];
+	// std::string mesh_path = argv[1];
+	std::string mesh_path = "/home/server/MaJing/courses/DigitalGometryProcessing/geometry/example/hw12/leaf.obj";
 	loadMesh(mesh_path, mesh);
-	std::string out_path = argv[2];
+	// std::string out_path = argv[2];
+	std::string out_path = "output/hw12.obj";
 
 	//loadMesh("rectangle.obj", mesh);
 	int iter_num = 1000; // iterative number

@@ -145,8 +145,29 @@ void testCot()
         i++;
     }
 }
+
+void testEdgeDistance()
+{
+    using namespace Eigen;
+    Vector3d v(1, 0, 0);
+    Vector3d a(3, 0, 3);
+    a.normalize();
+    Vector4d v_(v[0], v[1], v[2], 1);
+    Vector3d b = a.cross(v);
+    cout << "b: " << a.cross(v).transpose() << " anorm:" << a.transpose() << endl;
+    Matrix<double, 3, 4> K;
+    K << 0, -a.z(), a.y(), -b.x(),
+        a.z(), 0, -a.x(), -b.y(),
+        -a.y(), a.x(), 0, -b.z();
+    double dd = v_.transpose() * (K.transpose() * K) * v_;
+    cout << "dd=" << dd << endl;
+
+    double d = a.cross(v).norm() / a.norm();
+    cout << "d=" << d << " d*d=" << d * d << endl;
+}
+
 int main()
 {
-    testCot();
+    testEdgeDistance();
     return 0;
 }

@@ -288,17 +288,17 @@ target_link_libraries(hw9
 #     src/hw12/*.cpp
 # )
 
-# # Add an executable with the above sources
-# add_executable(${PROJECT_NAME}_HW12 ${HW12_FILE})
-# target_include_directories(${PROJECT_NAME}_HW12
-#     PRIVATE 
-#         ${PROJECT_SOURCE_DIR}/include
-# )
+# Add an executable with the above sources
+add_executable(hw12 src/hw12/main.cpp)
+target_include_directories(hw12
+    PRIVATE 
+        ${PROJECT_SOURCE_DIR}/include
+)
 
-# target_link_libraries(${PROJECT_NAME}_HW12
-#     PRIVATE 
-#         ACAM_mesh
-# )
+target_link_libraries(hw12
+    PRIVATE 
+        ACAM_mesh
+)
 
 ############################################################
 # Project Homework 13
