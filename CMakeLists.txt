@@ -342,3 +342,15 @@ target_link_libraries(contract
     PRIVATE 
         ACAM_mesh
 )
+
+
+find_package(OpenCV)
+if(OpenCV_FOUND)
+message("-- OpenCV_INCLUDE_DIRS: ${OpenCV_INCLUDE_DIRS}")
+message("-- OpenCV_LIBRARIES: ${OpenCV_LIBRARIES}")
+include_directories(${OpenCV_INCLUDE_DIRS})
+endif()
+
+add_executable(voro src/voronoi/main.cpp)
+target_link_libraries(voro Eigen3::Eigen ${OpenCV_LIBRARIES})
+target_compile_definitions(voro PUBLIC -DWITH_INLINE)
