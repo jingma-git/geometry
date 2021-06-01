@@ -346,11 +346,22 @@ target_link_libraries(contract
 
 find_package(OpenCV)
 if(OpenCV_FOUND)
-message("-- OpenCV_INCLUDE_DIRS: ${OpenCV_INCLUDE_DIRS}")
-message("-- OpenCV_LIBRARIES: ${OpenCV_LIBRARIES}")
-include_directories(${OpenCV_INCLUDE_DIRS})
+    message("-- OpenCV_INCLUDE_DIRS: ${OpenCV_INCLUDE_DIRS}")
+    message("-- OpenCV_LIBRARIES: ${OpenCV_LIBRARIES}")
+    include_directories(${OpenCV_INCLUDE_DIRS})
 endif()
 
 add_executable(voro src/voronoi/main.cpp)
 target_link_libraries(voro Eigen3::Eigen ${OpenCV_LIBRARIES})
 target_compile_definitions(voro PUBLIC -DWITH_INLINE)
+
+find_package(Boost)
+if(Boost_FOUND)
+    message("-- Boost_INCLUDE_DIRS: ${Boost_INCLUDE_DIRS}")
+    message("-- Boost_LIBRARIES: ${Boost_LIBRARIES}")
+    include_directories(${Boost_INCLUDE_DIRS})
+endif()
+
+add_executable(sskel src/sskel/main.cpp)
+target_link_libraries(sskel Eigen3::Eigen ${OpenCV_LIBRARIES} ${Boost_LIBRARIES})
+target_compile_definitions(sskel PUBLIC -DWITH_INLINE)
