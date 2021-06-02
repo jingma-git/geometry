@@ -365,3 +365,6 @@ endif()
 add_executable(sskel src/sskel/main.cpp)
 target_link_libraries(sskel Eigen3::Eigen ${OpenCV_LIBRARIES} ${Boost_LIBRARIES})
 target_compile_definitions(sskel PUBLIC -DWITH_INLINE)
+
+add_executable(spline src/spline/main.cpp src/spline/Spline.cpp)
+target_link_libraries(spline Eigen3::Eigen ${OpenCV_LIBRARIES} ${Boost_LIBRARIES})
