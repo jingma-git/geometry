@@ -6,7 +6,8 @@ using namespace std;
 int main()
 {
     CSpline spline;
-    spline.ChangeMode(CSpline::SPLINE_MODE::SPLMODE_SPLINE);
+    // spline.ChangeMode(CSpline::SPLINE_MODE::SPLMODE_SPLINE);
+    spline.ChangeMode(CSpline::SPLINE_MODE::SPLMODE_CLOSED_SPLINE);
     spline.AddCtrlPoint(Pnt3(10, 10, 0));
     spline.AddCtrlPoint(Pnt3(30, -10, 0));
     spline.AddCtrlPoint(Pnt3(50, 10, 0));
