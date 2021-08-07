@@ -1283,6 +1283,7 @@ namespace egl
 				// cout << __FILE__ << " " << __LINE__ << " divCount=" << divCount << " tension=" << tension << endl;
 				for (j = 0; j <= divCount; j++)
 				{
+
 					polyline.push_back(spline.GetPoint(i, j / static_cast<double>(divCount), tension));
 				}
 				sketchPolyLines.push_back(polyline);
