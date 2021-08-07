@@ -2,7 +2,7 @@
 
 ## ToDO:
 How to find the light direction given an image: n.dot(light) = diffuse
-Can I add normal info when doing laplace inflation?
+Can I add normal info when doing laplace inflation? Read Interactive Normal Paper
 
 implement direct laplace smooth and implicit laplace smooth
 

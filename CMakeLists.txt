@@ -288,17 +288,17 @@ target_link_libraries(hw9
 #     src/hw12/*.cpp
 # )
 
-# # Add an executable with the above sources
-# add_executable(${PROJECT_NAME}_HW12 ${HW12_FILE})
-# target_include_directories(${PROJECT_NAME}_HW12
-#     PRIVATE 
-#         ${PROJECT_SOURCE_DIR}/include
-# )
+# Add an executable with the above sources
+add_executable(hw12 src/hw12/main.cpp)
+target_include_directories(hw12
+    PRIVATE 
+        ${PROJECT_SOURCE_DIR}/include
+)
 
-# target_link_libraries(${PROJECT_NAME}_HW12
-#     PRIVATE 
-#         ACAM_mesh
-# )
+target_link_libraries(hw12
+    PRIVATE 
+        ACAM_mesh
+)
 
 ############################################################
 # Project Homework 13
@@ -342,3 +342,29 @@ target_link_libraries(contract
     PRIVATE 
         ACAM_mesh
 )
+
+
+find_package(OpenCV)
+if(OpenCV_FOUND)
+    message("-- OpenCV_INCLUDE_DIRS: ${OpenCV_INCLUDE_DIRS}")
+    message("-- OpenCV_LIBRARIES: ${OpenCV_LIBRARIES}")
+    include_directories(${OpenCV_INCLUDE_DIRS})
+endif()
+
+add_executable(voro src/voronoi/main.cpp)
+target_link_libraries(voro Eigen3::Eigen ${OpenCV_LIBRARIES})
+target_compile_definitions(voro PUBLIC -DWITH_INLINE)
+
+find_package(Boost)
+if(Boost_FOUND)
+    message("-- Boost_INCLUDE_DIRS: ${Boost_INCLUDE_DIRS}")
+    message("-- Boost_LIBRARIES: ${Boost_LIBRARIES}")
+    include_directories(${Boost_INCLUDE_DIRS})
+endif()
+
+# add_executable(sskel src/sskel/main.cpp)
+# target_link_libraries(sskel Eigen3::Eigen ${OpenCV_LIBRARIES} ${Boost_LIBRARIES})
+# target_compile_definitions(sskel PUBLIC -DWITH_INLINE)
+
+add_executable(spline src/spline/main.cpp src/spline/Spline.cpp)
+target_link_libraries(spline Eigen3::Eigen ${OpenCV_LIBRARIES} ${Boost_LIBRARIES})

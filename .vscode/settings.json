@@ -83,6 +83,11 @@
         "bit": "cpp",
         "memory_resource": "cpp",
         "variant": "cpp",
+<<<<<<< HEAD
         "core": "cpp"
+=======
+        "core": "cpp",
+        "*.ipp": "cpp"
+>>>>>>> a8beadfaacd129ffcd0992235e1a1a86fcf0a7fb
     }
 }
