@@ -84,6 +84,7 @@
         "memory_resource": "cpp",
         "variant": "cpp",
         "core": "cpp",
-        "*.ipp": "cpp"
+        "*.ipp": "cpp",
+        "eigen": "cpp"
     }
 }
