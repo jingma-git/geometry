@@ -85,6 +85,7 @@
         "variant": "cpp",
         "core": "cpp",
         "*.ipp": "cpp",
-        "eigen": "cpp"
-    }
+        "eigen": "cpp",
+        "csignal": "cpp"
+}
 }

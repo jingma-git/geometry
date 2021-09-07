@@ -5,6 +5,7 @@ project(ACAM_mesh)
 #设置不生成MinSizeRel;RelWithDebInfo
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release")
 set(CMAKE_CXX_STANDARD  17)
+set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/;${CMAKE_MODULE_PATH}")
 
 #path
 # SET(EIGEN_PATH "D:/LIBRARY/Eigen")
@@ -376,5 +377,9 @@ if(OpenMP_FOUND)
     message(STATUS "Found OpenMP")
 endif()
 
+include_directories(external/CGAL/include)
+# GMP
+find_package(GMP REQUIRED)
+
 add_executable(laplace laplace.cpp)
-target_link_libraries(laplace Eigen3::Eigen OpenMP::OpenMP_CXX)
+target_link_libraries(laplace Eigen3::Eigen OpenMP::OpenMP_CXX ${GMP_LIBRARIES})
