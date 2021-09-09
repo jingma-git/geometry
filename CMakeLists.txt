@@ -383,3 +383,6 @@ find_package(GMP REQUIRED)
 
 add_executable(laplace laplace.cpp)
 target_link_libraries(laplace Eigen3::Eigen OpenMP::OpenMP_CXX ${GMP_LIBRARIES})
+
+add_executable(test test.cpp)
+target_link_libraries(test Eigen3::Eigen)

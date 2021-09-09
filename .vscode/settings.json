@@ -86,6 +86,9 @@
         "core": "cpp",
         "*.ipp": "cpp",
         "eigen": "cpp",
-        "csignal": "cpp"
-}
+        "csignal": "cpp",
+        "pointers": "cpp",
+        "valarray": "cpp",
+        "dense": "cpp"
+    }
 }
