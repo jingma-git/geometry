@@ -183,16 +183,17 @@ int main()
     SparseMatrix<double> G, L;
     matd_t V;
     mati_t F;
-    generate_mesh("random", 10201, V, F); //9, 121, 10201
-    laplace(V, F, L);                     //semi-positive
-    // cout << L.toDense() << endl;
+    // generate_mesh("random", 10201, V, F); //9, 121, 10201
+    generate_mesh("regular", 9, V, F);
+    laplace(V, F, L); //semi-positive
+    cout << L.toDense() << endl;
 
     SparseMatrix<double> Lap; // semi-negative
     matd_t VV = matd_t::Zero(3, V.cols());
     VV.topRows(2) = V;
     egl::cotmatrix(VV, F, Lap);
-    // cout << "Lap\n"
-    //      << Lap.toDense() << endl;
+    cout << "Lap\n"
+         << Lap.toDense() << endl;
     double err = (-Lap - L).norm();
     cout << "err:" << err << endl;
     return 0;
