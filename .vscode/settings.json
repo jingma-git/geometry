@@ -89,6 +89,7 @@
         "csignal": "cpp",
         "pointers": "cpp",
         "valarray": "cpp",
-        "dense": "cpp"
+        "dense": "cpp",
+        "sparse": "cpp"
     }
 }

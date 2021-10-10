@@ -3,6 +3,7 @@
 #include <iostream>
 namespace egl
 {
+    // done in column wise fanshion, which is #v1, #v2..., #vn
     template <typename DerivedV, typename DerivedF, typename DerivedEV,
               typename DerivedFE, typename DerivedEF>
     void edge_topology(

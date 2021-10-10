@@ -1,19 +1,17 @@
 #pragma once
-#include <Eigen/Core>
+
 #include <Eigen/Sparse>
-#include <iostream>
 #include <fstream>
 
 namespace egl
 {
-    using namespace Eigen;
-    using namespace std;
-
     template <typename T, int whatever, typename IND>
-    bool readSMAT(const string fname, SparseMatrix<T, whatever, IND> &m)
+    void readSMAT(const std::string fname, Eigen::SparseMatrix<T, whatever, IND> &m)
     {
+        using namespace std;
+
         fstream readFile;
-        readFile.open(fname, ios::binary | ios::in);
+        readFile.open(fname.c_str(), ios::binary | ios::in);
         if (readFile.is_open())
         {
             IND rows, cols, nnz, inSz, outSz;
@@ -33,8 +31,7 @@ namespace egl
 
             m.finalize();
             readFile.close();
-            return true;
+
         } // file is open
-        return false;
     }
-};
+}
