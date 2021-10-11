@@ -61,6 +61,6 @@ int main()
 {
     // test_edge_topology();
     // test_dmat();
-    test_smat();
+    // test_smat();
     return 0;
 }

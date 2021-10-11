@@ -26,15 +26,18 @@ endif()
 # GMP
 find_package(GMP REQUIRED)
 
-include_directories(external/CGAL/include)
+include_directories(external/CGAL/include) # 5.3
 include_directories(external/egl/include) # egl relies on Eigen and CGAL
 include_directories(./include)
 
 add_executable(laplace src/egl/laplace.cpp)
 target_link_libraries(laplace Eigen3::Eigen OpenMP::OpenMP_CXX ${GMP_LIBRARIES})
 
-add_executable(test src/egl/test.cpp)
+add_executable(test src/egl/test_egl.cpp)
 target_link_libraries(test Eigen3::Eigen)
+
+add_executable(test_polyhedron src/egl/cgal/test_polyhedron.cpp)
+target_link_libraries(test_polyhedron Eigen3::Eigen)
 
 
 ############################################################
