@@ -5,6 +5,7 @@
 #include <egl/writeDMAT.h>
 #include <egl/readSMAT.h>
 #include <egl/writeSMAT.h>
+#include <egl/min_max_coeff.h>
 #include <iostream>
 using namespace Eigen;
 using namespace std;
@@ -57,10 +58,41 @@ void test_smat()
          << B << endl;
 }
 
+void test_min_max()
+{
+    int N = 6;
+    SparseMatrix<double> A(N, N);
+    std::vector<Triplet<double>> trpA;
+    for (int i = 0; i < N; ++i)
+    {
+        trpA.emplace_back(i, i, i);
+    }
+
+    A.setFromTriplets(trpA.begin(), trpA.end());
+    double minA, maxA;
+    min_max_coeff(minA, maxA, A);
+    cout << minA << ", " << maxA << endl;
+
+    SparseMatrix<float> B(N, N);
+    std::vector<Triplet<float>> trpB;
+    for (int i = 0; i < N; ++i)
+    {
+        trpB.emplace_back(i, i, i);
+    }
+
+    B.setFromTriplets(trpB.begin(), trpB.end());
+    float minB, maxB;
+    min_max_coeff(minB, maxB, B);
+    cout << minB << ", " << maxB << endl;
+
+    min_max_coeff(minB, maxB, B.block(0, 0, 4, 4).eval());
+    cout << minB << ", " << maxB << endl;
+}
 int main()
 {
     // test_edge_topology();
     // test_dmat();
     // test_smat();
+    test_min_max();
     return 0;
 }
