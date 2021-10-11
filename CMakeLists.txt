@@ -26,7 +26,7 @@ endif()
 # GMP
 find_package(GMP REQUIRED)
 
-include_directories(external/CGAL/include) # 5.3
+include_directories(external/CGAL/include) # 5.3, gcc 8.3 and higher
 include_directories(external/egl/include) # egl relies on Eigen and CGAL
 include_directories(./include)
 
