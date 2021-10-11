@@ -17,8 +17,25 @@ if(EIGEN3_FOUND)
   include_directories(${EIGEN3_INCLUDE_DIR})
 endif(EIGEN3_FOUND)
 
+# find the required packages
+find_package(OpenMP REQUIRED)
+if(OpenMP_FOUND)
+    message(STATUS "Found OpenMP")
+endif()
+
+# GMP
+find_package(GMP REQUIRED)
+
+include_directories(external/CGAL/include)
+include_directories(external/egl/include) # egl relies on Eigen and CGAL
 include_directories(./include)
-include_directories(./)
+
+add_executable(laplace src/egl/laplace.cpp)
+target_link_libraries(laplace Eigen3::Eigen OpenMP::OpenMP_CXX ${GMP_LIBRARIES})
+
+add_executable(test src/egl/test.cpp)
+target_link_libraries(test Eigen3::Eigen)
+
 
 ############################################################
 # Create a library
@@ -371,18 +388,3 @@ target_link_libraries( ACAM_example
 # add_executable(spline src/spline/main.cpp src/spline/Spline.cpp)
 # target_link_libraries(spline Eigen3::Eigen ${OpenCV_LIBRARIES} ${Boost_LIBRARIES})
 
-# find the required packages
-find_package(OpenMP REQUIRED)
-if(OpenMP_FOUND)
-    message(STATUS "Found OpenMP")
-endif()
-
-include_directories(external/CGAL/include)
-# GMP
-find_package(GMP REQUIRED)
-
-add_executable(laplace laplace.cpp)
-target_link_libraries(laplace Eigen3::Eigen OpenMP::OpenMP_CXX ${GMP_LIBRARIES})
-
-add_executable(test test.cpp)
-target_link_libraries(test Eigen3::Eigen)
