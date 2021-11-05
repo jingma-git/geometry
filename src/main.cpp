@@ -370,9 +370,9 @@ int main()
 	// testThreeTriangles();
 	// testFourTrianglesPatchingLink();
 
-	// // mesh load an write , now only support obj/off
-	// PolyMesh *mesh = new PolyMesh();
-	// loadMesh("example/hw1/alien.obj", mesh);
+	// mesh load an write , now only support obj/off
+	PolyMesh *mesh = new PolyMesh();
+	loadMesh("example/hw1/alien.obj", mesh);
 	// writeMesh("triangle.obj", mesh);
 	// //you can also use the IO option such as
 	// IOOptions opt;
@@ -391,8 +391,8 @@ int main()
 	// //example for flip e triangle mesh edge
 	// exampleFlipTriangle();
 
-	//example for collapse e triangle mesh edge
-	exampleCollapseTriangle();
+	// //example for collapse e triangle mesh edge
+	// exampleCollapseTriangle();
 }
 
 //int main()

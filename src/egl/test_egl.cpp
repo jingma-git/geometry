@@ -6,6 +6,7 @@
 #include <egl/readSMAT.h>
 #include <egl/writeSMAT.h>
 #include <egl/min_max_coeff.h>
+#include <egl/cat.h>
 #include <iostream>
 using namespace Eigen;
 using namespace std;
@@ -88,11 +89,34 @@ void test_min_max()
     min_max_coeff(minB, maxB, B.block(0, 0, 4, 4).eval());
     cout << minB << ", " << maxB << endl;
 }
+
+void test_cat()
+{
+    int rows, cols;
+    rows = cols = 6;
+    SparseMatrix<double> A(rows, cols), B, C;
+    typedef Triplet<double> Trip;
+    std::vector<Trip> trp, tmp;
+    for (int i = 0; i < rows; ++i)
+    {
+        trp.emplace_back(i, i, i);
+    }
+
+    A.setFromTriplets(trp.begin(), trp.end());
+
+    // egl::cat(1, A, A, A, B);
+    egl::cat(2, A, A, A, C);
+    // cout << B.toDense() << endl;
+    cout << C.toDense() << endl;
+}
+
 int main()
 {
     // test_edge_topology();
     // test_dmat();
     // test_smat();
-    test_min_max();
+    // test_min_max();
+
+    test_cat();
     return 0;
 }

@@ -90,6 +90,7 @@
         "pointers": "cpp",
         "valarray": "cpp",
         "dense": "cpp",
-        "sparse": "cpp"
+        "sparse": "cpp",
+        "shared_mutex": "cpp"
     }
 }

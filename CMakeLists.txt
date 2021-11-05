@@ -76,6 +76,12 @@ target_link_libraries( ACAM_example
 )
 
 ############################################################
+# Project Skeletonization
+############################################################
+add_executable(repair src/mesh_contract/repair.cpp)
+target_link_libraries(repair ACAM_mesh)
+
+############################################################
 # Project Homework 1
 ############################################################
 
