@@ -7,6 +7,7 @@
 #include <egl/writeSMAT.h>
 #include <egl/min_max_coeff.h>
 #include <egl/cat.h>
+#include <egl/make_cube.h>
 #include <iostream>
 using namespace Eigen;
 using namespace std;
@@ -110,13 +111,23 @@ void test_cat()
     cout << C.toDense() << endl;
 }
 
+void test_make_cube()
+{
+    MatrixXd V;
+    MatrixXi F;
+
+    make_cube(V, F);
+
+    cout << V << endl;
+}
+
 int main()
 {
     // test_edge_topology();
     // test_dmat();
     // test_smat();
     // test_min_max();
-
-    test_cat();
+    // test_cat();
+    test_make_cube();
     return 0;
 }
