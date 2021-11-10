@@ -128,6 +128,6 @@ int main()
     // test_smat();
     // test_min_max();
     // test_cat();
-    test_make_cube();
+    // test_make_cube();
     return 0;
 }

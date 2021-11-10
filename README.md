@@ -1,4 +1,15 @@
-# My EasyGL (Geometry is fun!)
+# My EasyGL (Let's play with Geometry)
+This repo contains my own adaptions for 3 geometry processing libraries:
+* ACAM https://github.com/USTC-GCL-F/AMMesh
+* CGAL-5.3
+* Libigl
+
+## Video Link
+https://www.bilibili.com/video/BV1B54y1B7Uc
+
+## Design Principles and Code Style
+* [Libigl](https://libigl.github.io/)
+* Basic type such as vec, matrix must follow Eigen's API
 
 ## ToDO:
 How to find the light direction given an image: n.dot(light) = diffuse
@@ -92,14 +103,3 @@ This is a visulization of [gradient field on triangle mesh](https://math.stackex
 #### 7. Why can't Curvture be defined on face, isn't it 90 rotation of normal?
 
 
-## Video Link
-https://www.bilibili.com/video/BV1B54y1B7Uc
-
-## Design Principles and Code Style
-* [Libigl](https://libigl.github.io/)
-* Basic type such as vec, matrix must follow Eigen's API
-## External Libraries
-
-* [Eigen](http://eigen.tuxfamily.org/)
-
-* https://github.com/USTC-GCL-F/AMMesh
