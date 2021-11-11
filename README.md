@@ -17,7 +17,13 @@ Can I add normal info when doing laplace inflation? Read Interactive Normal Pape
 
 implement direct laplace smooth and implicit laplace smooth
 
-
+## Curvature
+### Mean Curvature H = K1 + K2 
+Mean Curvature Normal: L*X = -2 * H * normal
+### Gaussian Curvature K = K1 * K2: 2 * PI - one_ring_triangle_incident_angle
+* K > 0: elliptical local convexity, sum_OneRignIncidentAngles < 2 * PI, a elliptical point
+* K = 0: hyperbolic, sum_OneRignIncidentAngles == 2 * PI, a flat plane
+* K < 0: parabolic saddle points, sum_OneRignIncidentAngles > 2 * PI, a saddle point
 
 ## Skeleton Extraction by Mesh Contraction
 Derive shape cost K by hand
