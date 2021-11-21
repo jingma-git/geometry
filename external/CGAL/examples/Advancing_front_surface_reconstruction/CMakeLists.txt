@@ -4,6 +4,7 @@
 cmake_minimum_required(VERSION 3.1...3.20)
 project(Advancing_front_surface_reconstruction_Examples)
 
+set(CGAL_DIR ../../)
 find_package(CGAL REQUIRED)
 
 # create a target per cppfile

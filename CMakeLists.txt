@@ -51,6 +51,11 @@ add_executable(test_polyhedron src/egl/cgal/test_polyhedron.cpp)
 target_link_libraries(test_polyhedron Eigen3::Eigen)
 
 ############################################################
+# CGAL
+############################################################
+add_executable(test_euler src/cgal/test_euler.cpp)
+
+############################################################
 # Head-only Libigl library: Verts are arranged as #V by 3
 ############################################################
 option(LIBIGL_USE_STATIC_LIBRARY "Use libigl as static library" ON)
@@ -91,8 +96,17 @@ add_executable(ACAM_example
     src/acam/main.cpp
 )
 
+add_executable(test_acam
+    src/acam/test.cpp
+)
+
 # link the new ACAM_example target with the ACAM_mesh target
 target_link_libraries( ACAM_example
+    PRIVATE 
+        ACAM_mesh
+)
+
+target_link_libraries( test_acam
     PRIVATE 
         ACAM_mesh
 )

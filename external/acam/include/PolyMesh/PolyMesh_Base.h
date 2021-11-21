@@ -17,9 +17,9 @@ namespace acamcad
 		class MPolyFace;
 
 		/**
-* the class of Vert in Half_edge structure
-* all index is begin with 0;
-*/
+		 * the class of Vert in Half_edge structure
+		 * all index is begin with 0;
+		 */
 		class MVert
 		{
 		private:
@@ -60,8 +60,8 @@ namespace acamcad
 			~MVert() { index_ = -1; }
 
 		public:
-			//before * : 'T', 'const T', 'T const' specify value's type
-			//after *:  *p means pointer which can be modified,  *const p mean a const pointer which cannot be modified
+			// before * : 'T', 'const T', 'T const' specify value's type
+			// after *:  *p means pointer which can be modified,  *const p mean a const pointer which cannot be modified
 			MHalfedge *const halfEdge() { return he_; }				// return a const pointer to MHalfedge
 			const MHalfedge *const halfEdge() const { return he_; } // return a const pointer to const MHalfedge
 
@@ -92,12 +92,12 @@ namespace acamcad
 			bool isSelected() { return flag_select_; }
 			void setSelected(bool select) { flag_show_ ? flag_select_ = select : flag_select_ = false; }
 
-			//The default setting of color is all 0.
+			// The default setting of color is all 0.
 			MRGBAf getColor_with_alpha() { return MRGBAf(color_[0], color_[1], color_[2], color_[3]); }
 			MRGBf getColor() { return MRGBf(color_[0], color_[1], color_[2]); }
 
-			//void setColor(float a[]) { color_[0] = a[0]; color_[1] = a[1]; color_[2] = a[2]; }
-			//void setColor_with_alpha(float a[]) { color_[0] = a[0]; color_[1] = a[1]; color_[2] = a[2], color_[3] = a[3]; }
+			// void setColor(float a[]) { color_[0] = a[0]; color_[1] = a[1]; color_[2] = a[2]; }
+			// void setColor_with_alpha(float a[]) { color_[0] = a[0]; color_[1] = a[1]; color_[2] = a[2], color_[3] = a[3]; }
 
 			void setColor(float r, float g, float b)
 			{
@@ -140,26 +140,21 @@ namespace acamcad
 				texcoord_[2] = t[2];
 			}
 
-			//The default setting of Texture is all 0.
+			// The default setting of Texture is all 0.
 			Texcoord getTexture() { return Texcoord(texcoord_[0], texcoord_[1]); }
 			Texcoord getTextureUVW() { return Texcoord(texcoord_[0], texcoord_[1], texcoord_[2]); }
 
 			bool isIsolated() const { return he_ == nullptr; }
 
-			//Try to set the half of the point as the boundary half. Be sure call it before adding faces by yourself.
+			// Try to set the half of the point as the boundary half. Be sure call it before adding faces by yourself.
 			void adjustOutgoingHalfedge();
-			friend std::ostream &operator<<(std::ostream &out, const MVert &v)
-			{
-				out << "v" << v.index();
-				return out;
-			}
 		};
 
 		/**
-* the class of Edge in Half_edge structure;
-* the halfedge index is not from the edge index
-* One can not select a halfedge or see a halfedge;
-*/
+		 * the class of Edge in Half_edge structure;
+		 * the halfedge index is not from the edge index
+		 * One can not select a halfedge or see a halfedge;
+		 */
 		class MHalfedge
 		{
 		private:
@@ -171,7 +166,7 @@ namespace acamcad
 
 			MHalfedge *next_, *prev_;
 
-			MHalfedge *pair_; //opposite halfedge
+			MHalfedge *pair_; // opposite halfedge
 
 			float texcoord_[3];
 
@@ -223,10 +218,10 @@ namespace acamcad
 			bool isBoundary() const { return poly_face_ == nullptr; }
 
 			int index() const { return index_; }
-			//int edge_index() { return index_ / 2; }
+			// int edge_index() { return index_ / 2; }
 			void set_index(int index) { index_ = index; }
 
-			///get the direction of the edge, from fromVectex to toVertex;
+			/// get the direction of the edge, from fromVectex to toVertex;
 			MVector3 tangent()
 			{
 				MVector3 t = toVertex()->position() - fromVertex()->position();
@@ -249,16 +244,11 @@ namespace acamcad
 
 			Texcoord getTexture() { return Texcoord(texcoord_[0], texcoord_[1]); }
 			Texcoord getTextureUVW() { return Texcoord(texcoord_[0], texcoord_[1], texcoord_[2]); }
-			friend std::ostream &operator<<(std::ostream &out, const MHalfedge &he)
-			{
-				out << "h" << he.index();
-				return out;
-			}
 		};
 
 		/**
-* the class of Edge in Half_edge structure
-*/
+		 * the class of Edge in Half_edge structure
+		 */
 		class MEdge
 		{
 		private:
@@ -302,7 +292,7 @@ namespace acamcad
 			bool isSelected() const { return flag_select_; }
 			void setSelected(bool select) { flag_show_ ? flag_select_ = select : flag_select_ = false; }
 
-			///get Vertex of the edge, the 0 is the first, the 1 is the second, the return is not orderd;
+			/// get Vertex of the edge, the 0 is the first, the 1 is the second, the return is not orderd;
 			MVert *getVert(int edge_v)
 			{
 				updateVert();
@@ -332,18 +322,18 @@ namespace acamcad
 				return v1_->position() * 0.5 + v2_->position() * 0.5;
 			}
 
-			//MPoint3 interpolate(const double& t)
+			// MPoint3 interpolate(const double& t)
 			//{
 			//	updateVert();
 			//	return v1_->position() * t + v2_->position() * (1 - t);
-			//}
+			// }
 			/////get the direction of the edge, from v1 to v2;
-			//MVector3 tangent() const
+			// MVector3 tangent() const
 			//{
 			//	MVector3 t = v2_->position() - v1_->position();
 			//	t.normalize();
 			//	return t;
-			//}
+			// }
 			friend std::ostream &operator<<(std::ostream &out, const MEdge &e)
 			{
 				out << "e" << e.index();
@@ -352,9 +342,9 @@ namespace acamcad
 		};
 
 		/**
-* the class of PolyFace in Half_edge structure;
-* all index is begin with 0
-*/
+		 * the class of PolyFace in Half_edge structure;
+		 * all index is begin with 0
+		 */
 		class MPolyFace
 		{
 		private:
@@ -400,7 +390,7 @@ namespace acamcad
 				return polynum_;
 			}
 
-			//be sure you have updatePoluNum
+			// be sure you have updatePoluNum
 			unsigned int PolyNum() const
 			{
 				return polynum_;
@@ -425,7 +415,7 @@ namespace acamcad
 
 			MPoint3 getFaceCenter();
 
-			//The default setting of color is all 0.
+			// The default setting of color is all 0.
 			MRGBAf getColor_with_alpha() { return MRGBAf(color_[0], color_[1], color_[2], color_[3]); }
 			MRGBf getColor() { return MRGBf(color_[0], color_[1], color_[2]); }
 
@@ -467,5 +457,23 @@ namespace acamcad
 			}
 		};
 
+		inline std::ostream &operator<<(std::ostream &out, const MVert &v)
+		{
+			out << "v" << v.index() << ": " << v.position();
+			return out;
+		}
+
+		inline std::ostream &operator<<(std::ostream &out, const MHalfedge &h)
+		{
+			out << "h" << h.index()
+				<< ": prevH=h" << h.prev()->index()
+				<< " nextH=h" << h.next()->index()
+				<< " oppH=h" << h.pair()->index()
+				<< " fromV=" << h.fromVertex()->position()
+				<< " toV=" << h.toVertex()->position();
+			if (h.isBoundary())
+				out << " isBorder";
+			return out;
+		}
 	} // namespace polymesh
 } // namespace acamcad

@@ -17,10 +17,16 @@ Can I add normal info when doing laplace inflation? Read Interactive Normal Pape
 
 implement direct laplace smooth and implicit laplace smooth
 
+## CGAL
+### Euler Operation
+#### Euler::collapse_edge(e, g)
+<img src="img/collapse_edge.jpg" width="800">
+<img src="img/join_face_join_vertex.jpg" width="800">
+
 ## Curvature
-### Mean Curvature H = K1 + K2 
+### Mean Curvature H = K1 + K2: extrinsic
 Mean Curvature Normal: L*X = -2 * H * normal
-### Gaussian Curvature K = K1 * K2: 2 * PI - one_ring_triangle_incident_angle
+### Gaussian Curvature K = K1 * K2: 2 * PI - one_ring_triangle_incident_angle: intrinsic
 * K > 0: elliptical local convexity, sum_OneRignIncidentAngles < 2 * PI, a elliptical point
 * K = 0: hyperbolic, sum_OneRignIncidentAngles == 2 * PI, a flat plane
 * K < 0: parabolic saddle points, sum_OneRignIncidentAngles > 2 * PI, a saddle point

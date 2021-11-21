@@ -1,0 +1,9 @@
+/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Advancing_front_surface_reconstruction/build/CMakeFiles/edit_cache.dir
+/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Advancing_front_surface_reconstruction/build/CMakeFiles/reconstruction_surface_mesh.dir
+/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Advancing_front_surface_reconstruction/build/CMakeFiles/reconstruction_structured.dir
+/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Advancing_front_surface_reconstruction/build/CMakeFiles/reconstruction_fct.dir
+/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Advancing_front_surface_reconstruction/build/CMakeFiles/reconstruction_class.dir
+/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Advancing_front_surface_reconstruction/build/CMakeFiles/rebuild_cache.dir
+/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Advancing_front_surface_reconstruction/build/CMakeFiles/cgal_check_build_system.dir
+/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Advancing_front_surface_reconstruction/build/CMakeFiles/ALL_CGAL_TARGETS.dir
+/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Advancing_front_surface_reconstruction/build/CMakeFiles/boundaries.dir

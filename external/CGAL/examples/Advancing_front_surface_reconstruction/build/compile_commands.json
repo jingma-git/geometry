@@ -1,0 +1,31 @@
+[
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Advancing_front_surface_reconstruction/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/reconstruction_surface_mesh.dir/reconstruction_surface_mesh.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Advancing_front_surface_reconstruction/reconstruction_surface_mesh.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Advancing_front_surface_reconstruction/reconstruction_surface_mesh.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Advancing_front_surface_reconstruction/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/reconstruction_structured.dir/reconstruction_structured.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Advancing_front_surface_reconstruction/reconstruction_structured.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Advancing_front_surface_reconstruction/reconstruction_structured.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Advancing_front_surface_reconstruction/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/reconstruction_fct.dir/reconstruction_fct.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Advancing_front_surface_reconstruction/reconstruction_fct.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Advancing_front_surface_reconstruction/reconstruction_fct.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Advancing_front_surface_reconstruction/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/reconstruction_class.dir/reconstruction_class.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Advancing_front_surface_reconstruction/reconstruction_class.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Advancing_front_surface_reconstruction/reconstruction_class.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Advancing_front_surface_reconstruction/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/boundaries.dir/boundaries.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Advancing_front_surface_reconstruction/boundaries.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Advancing_front_surface_reconstruction/boundaries.cpp"
+}
+]

@@ -1,0 +1,283 @@
+[
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DCGAL_EIGEN3_ENABLED -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include -isystem /usr/local/include/eigen3  -g   -frounding-math -o CMakeFiles/hole_filling_example_OM.dir/hole_filling_example_OM.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/hole_filling_example_OM.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/hole_filling_example_OM.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DCGAL_LINKED_WITH_TBB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/corefinement_parallel_union_meshes.dir/corefinement_parallel_union_meshes.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/corefinement_parallel_union_meshes.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/corefinement_parallel_union_meshes.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/compute_normals_example_OM.dir/compute_normals_example_OM.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/compute_normals_example_OM.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/compute_normals_example_OM.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/repair_polygon_soup_example.dir/repair_polygon_soup_example.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/repair_polygon_soup_example.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/repair_polygon_soup_example.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/corefinement_OM_union.dir/corefinement_OM_union.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/corefinement_OM_union.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/corefinement_OM_union.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/manifoldness_repair_example.dir/manifoldness_repair_example.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/manifoldness_repair_example.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/manifoldness_repair_example.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/volume_connected_components.dir/volume_connected_components.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/volume_connected_components.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/volume_connected_components.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/random_perturbation_SM_example.dir/random_perturbation_SM_example.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/random_perturbation_SM_example.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/random_perturbation_SM_example.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/corefinement_polyhedron_union.dir/corefinement_polyhedron_union.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/corefinement_polyhedron_union.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/corefinement_polyhedron_union.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/corefinement_mesh_union_and_intersection.dir/corefinement_mesh_union_and_intersection.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/corefinement_mesh_union_and_intersection.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/corefinement_mesh_union_and_intersection.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/corefinement_mesh_union.dir/corefinement_mesh_union.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/corefinement_mesh_union.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/corefinement_mesh_union.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/polyhedral_envelope_mesh_containment.dir/polyhedral_envelope_mesh_containment.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/polyhedral_envelope_mesh_containment.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/polyhedral_envelope_mesh_containment.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/polyhedral_envelope.dir/polyhedral_envelope.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/polyhedral_envelope.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/polyhedral_envelope.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/orientation_pipeline_example.dir/orientation_pipeline_example.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/orientation_pipeline_example.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/orientation_pipeline_example.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DCGAL_EIGEN3_ENABLED -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include -isystem /usr/local/include/eigen3  -g   -frounding-math -o CMakeFiles/hole_filling_example_LCC.dir/hole_filling_example_LCC.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/hole_filling_example_LCC.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/hole_filling_example_LCC.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/triangulate_faces_example.dir/triangulate_faces_example.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/triangulate_faces_example.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/triangulate_faces_example.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/corefinement_LCC.dir/corefinement_LCC.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/corefinement_LCC.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/corefinement_LCC.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/corefinement_difference_remeshed.dir/corefinement_difference_remeshed.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/corefinement_difference_remeshed.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/corefinement_difference_remeshed.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/triangulate_polyline_example.dir/triangulate_polyline_example.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/triangulate_polyline_example.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/triangulate_polyline_example.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DCGAL_EIGEN3_ENABLED -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include -isystem /usr/local/include/eigen3  -g   -frounding-math -o CMakeFiles/refine_fair_example.dir/refine_fair_example.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/refine_fair_example.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/refine_fair_example.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DCGAL_EIGEN3_ENABLED -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include -isystem /usr/local/include/eigen3  -g   -frounding-math -o CMakeFiles/mesh_smoothing_example.dir/mesh_smoothing_example.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/mesh_smoothing_example.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/mesh_smoothing_example.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DCGAL_EIGEN3_ENABLED -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include -isystem /usr/local/include/eigen3  -g   -frounding-math -o CMakeFiles/hole_filling_example_SM.dir/hole_filling_example_SM.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/hole_filling_example_SM.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/hole_filling_example_SM.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DCGAL_EIGEN3_ENABLED -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include -isystem /usr/local/include/eigen3  -g   -frounding-math -o CMakeFiles/hole_filling_example.dir/hole_filling_example.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/hole_filling_example.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/hole_filling_example.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/compute_normals_example_Polyhedron.dir/compute_normals_example_Polyhedron.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/compute_normals_example_Polyhedron.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/compute_normals_example_Polyhedron.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/point_inside_example_OM.dir/point_inside_example_OM.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/point_inside_example_OM.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/point_inside_example_OM.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/connected_components_example.dir/connected_components_example.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/connected_components_example.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/connected_components_example.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DCGAL_LINKED_WITH_TBB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/self_intersections_example.dir/self_intersections_example.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/self_intersections_example.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/self_intersections_example.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/corefinement_mesh_union_with_attributes.dir/corefinement_mesh_union_with_attributes.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/corefinement_mesh_union_with_attributes.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/corefinement_mesh_union_with_attributes.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/compute_normals_example.dir/compute_normals_example.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/compute_normals_example.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/compute_normals_example.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/polyhedral_envelope_of_triangle_soup.dir/polyhedral_envelope_of_triangle_soup.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/polyhedral_envelope_of_triangle_soup.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/polyhedral_envelope_of_triangle_soup.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/triangulate_faces_example_OM.dir/triangulate_faces_example_OM.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/triangulate_faces_example_OM.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/triangulate_faces_example_OM.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/stitch_borders_example.dir/stitch_borders_example.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/stitch_borders_example.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/stitch_borders_example.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/corefinement_SM.dir/corefinement_SM.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/corefinement_SM.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/corefinement_SM.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/point_inside_example.dir/point_inside_example.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/point_inside_example.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/point_inside_example.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/stitch_borders_example_OM.dir/stitch_borders_example_OM.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/stitch_borders_example_OM.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/stitch_borders_example_OM.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/face_filtered_graph_example.dir/face_filtered_graph_example.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/face_filtered_graph_example.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/face_filtered_graph_example.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/triangulate_faces_split_visitor_example.dir/triangulate_faces_split_visitor_example.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/triangulate_faces_split_visitor_example.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/triangulate_faces_split_visitor_example.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DCGAL_EIGEN3_ENABLED -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include -isystem /usr/local/include/eigen3  -g   -frounding-math -o CMakeFiles/shape_smoothing_example.dir/shape_smoothing_example.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/shape_smoothing_example.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/shape_smoothing_example.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/orient_polygon_soup_example.dir/orient_polygon_soup_example.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/orient_polygon_soup_example.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/orient_polygon_soup_example.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/detect_features_example.dir/detect_features_example.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/detect_features_example.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/detect_features_example.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/mesh_slicer_example.dir/mesh_slicer_example.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/mesh_slicer_example.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/mesh_slicer_example.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/isotropic_remeshing_example.dir/isotropic_remeshing_example.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/isotropic_remeshing_example.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/isotropic_remeshing_example.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/isotropic_remeshing_of_patch_example.dir/isotropic_remeshing_of_patch_example.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/isotropic_remeshing_of_patch_example.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/isotropic_remeshing_of_patch_example.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/locate_example.dir/locate_example.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/locate_example.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/locate_example.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/surface_mesh_intersection.dir/surface_mesh_intersection.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/surface_mesh_intersection.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/surface_mesh_intersection.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DCGAL_LINKED_WITH_TBB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/hausdorff_distance_remeshing_example.dir/hausdorff_distance_remeshing_example.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/hausdorff_distance_remeshing_example.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/hausdorff_distance_remeshing_example.cpp"
+},
+
+{
+  "directory": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+  "command": "/bin/g++-7  -DBOOST_ALL_NO_LIB -DNOMINMAX -D_USE_MATH_DEFINES -isystem /home/server/MaJing/cpp_pro/autoss/external/CGAL/include  -g   -frounding-math -o CMakeFiles/corefinement_consecutive_bool_op.dir/corefinement_consecutive_bool_op.cpp.o -c /home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/corefinement_consecutive_bool_op.cpp",
+  "file": "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/corefinement_consecutive_bool_op.cpp"
+}
+]

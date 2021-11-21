@@ -1,0 +1,113 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.1"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Advancing_front_surface_reconstruction_Examples",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ALL_CGAL_TARGETS::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ALL_CGAL_TARGETS-Debug-768521f3029004e61fa4.json",
+					"name" : "ALL_CGAL_TARGETS",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "boundaries::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-boundaries-Debug-f2de3e27005493024cb3.json",
+					"name" : "boundaries",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cgal_check_build_system::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cgal_check_build_system-Debug-1922316d2fac65a83bce.json",
+					"name" : "cgal_check_build_system",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "reconstruction_class::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-reconstruction_class-Debug-924c8903ba5c9361ce5e.json",
+					"name" : "reconstruction_class",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "reconstruction_fct::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-reconstruction_fct-Debug-4e9db133c183aa0410b5.json",
+					"name" : "reconstruction_fct",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "reconstruction_structured::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-reconstruction_structured-Debug-a8ec0deb322cf992b7e2.json",
+					"name" : "reconstruction_structured",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "reconstruction_surface_mesh::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-reconstruction_surface_mesh-Debug-15604b748f65e0e7af5b.json",
+					"name" : "reconstruction_surface_mesh",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Advancing_front_surface_reconstruction/build",
+		"source" : "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Advancing_front_surface_reconstruction"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 0
+	}
+}

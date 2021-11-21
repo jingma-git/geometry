@@ -1,0 +1,491 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.1"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20,
+						21,
+						22,
+						23,
+						24,
+						25,
+						26,
+						27,
+						28,
+						29,
+						30,
+						31,
+						32,
+						33,
+						34,
+						35,
+						36,
+						37,
+						38,
+						39,
+						40,
+						41,
+						42,
+						43,
+						44,
+						45,
+						46,
+						47,
+						48
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Polygon_mesh_processing_Examples",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20,
+						21,
+						22,
+						23,
+						24,
+						25,
+						26,
+						27,
+						28,
+						29,
+						30,
+						31,
+						32,
+						33,
+						34,
+						35,
+						36,
+						37,
+						38,
+						39,
+						40,
+						41,
+						42,
+						43,
+						44,
+						45,
+						46,
+						47,
+						48
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ALL_CGAL_TARGETS::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ALL_CGAL_TARGETS-Debug-8885b54b7304d142be86.json",
+					"name" : "ALL_CGAL_TARGETS",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cgal_check_build_system::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cgal_check_build_system-Debug-0502f6c92c05eb3c524b.json",
+					"name" : "cgal_check_build_system",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "compute_normals_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-compute_normals_example-Debug-a3713b70cf9131dca557.json",
+					"name" : "compute_normals_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "compute_normals_example_OM::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-compute_normals_example_OM-Debug-c7f9e2f2b2804e535796.json",
+					"name" : "compute_normals_example_OM",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "compute_normals_example_Polyhedron::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-compute_normals_example_Polyhedron-Debug-94a54427ceabd1ccceeb.json",
+					"name" : "compute_normals_example_Polyhedron",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "connected_components_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-connected_components_example-Debug-767a246091e966d58160.json",
+					"name" : "connected_components_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "corefinement_LCC::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-corefinement_LCC-Debug-39854684560ff2b30002.json",
+					"name" : "corefinement_LCC",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "corefinement_OM_union::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-corefinement_OM_union-Debug-8be925f9286907d958f0.json",
+					"name" : "corefinement_OM_union",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "corefinement_SM::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-corefinement_SM-Debug-84f4e48d047a6412aabe.json",
+					"name" : "corefinement_SM",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "corefinement_consecutive_bool_op::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-corefinement_consecutive_bool_op-Debug-00e264a8cd6422c219ea.json",
+					"name" : "corefinement_consecutive_bool_op",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "corefinement_difference_remeshed::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-corefinement_difference_remeshed-Debug-ae853ff3641dc7950dd3.json",
+					"name" : "corefinement_difference_remeshed",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "corefinement_mesh_union::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-corefinement_mesh_union-Debug-1ef30af348413ffdd4fb.json",
+					"name" : "corefinement_mesh_union",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "corefinement_mesh_union_and_intersection::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-corefinement_mesh_union_and_intersection-Debug-e9618bff0e57214755b8.json",
+					"name" : "corefinement_mesh_union_and_intersection",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "corefinement_mesh_union_with_attributes::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-corefinement_mesh_union_with_attributes-Debug-35ac51637c0f3f614ec9.json",
+					"name" : "corefinement_mesh_union_with_attributes",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "corefinement_parallel_union_meshes::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-corefinement_parallel_union_meshes-Debug-7267f56a11c76ab632c2.json",
+					"name" : "corefinement_parallel_union_meshes",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "corefinement_polyhedron_union::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-corefinement_polyhedron_union-Debug-7d3e108468355a636bde.json",
+					"name" : "corefinement_polyhedron_union",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "detect_features_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-detect_features_example-Debug-c4fd4901fe85bf705db6.json",
+					"name" : "detect_features_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "face_filtered_graph_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-face_filtered_graph_example-Debug-18f95c7663b2cb5df52f.json",
+					"name" : "face_filtered_graph_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hausdorff_distance_remeshing_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hausdorff_distance_remeshing_example-Debug-e05097469ef42a640de4.json",
+					"name" : "hausdorff_distance_remeshing_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hole_filling_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hole_filling_example-Debug-5d41d495a5984a373ab5.json",
+					"name" : "hole_filling_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hole_filling_example_LCC::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hole_filling_example_LCC-Debug-37d1a153b184e95e5194.json",
+					"name" : "hole_filling_example_LCC",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hole_filling_example_OM::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hole_filling_example_OM-Debug-93b6d21b8b96e6401b27.json",
+					"name" : "hole_filling_example_OM",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hole_filling_example_SM::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hole_filling_example_SM-Debug-4fb8031c10ef36af5b63.json",
+					"name" : "hole_filling_example_SM",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "isotropic_remeshing_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-isotropic_remeshing_example-Debug-bed3fff0746b418f873b.json",
+					"name" : "isotropic_remeshing_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "isotropic_remeshing_of_patch_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-isotropic_remeshing_of_patch_example-Debug-36dfeb0c845dadece238.json",
+					"name" : "isotropic_remeshing_of_patch_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "locate_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-locate_example-Debug-1bac3f308dbed6054c89.json",
+					"name" : "locate_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "manifoldness_repair_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-manifoldness_repair_example-Debug-f87d255ada82987bc0ed.json",
+					"name" : "manifoldness_repair_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mesh_slicer_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mesh_slicer_example-Debug-f34816172dccafff7b11.json",
+					"name" : "mesh_slicer_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mesh_smoothing_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mesh_smoothing_example-Debug-c63c80426273a1c4f37c.json",
+					"name" : "mesh_smoothing_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "orient_polygon_soup_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-orient_polygon_soup_example-Debug-b6ae989d128b70737bb4.json",
+					"name" : "orient_polygon_soup_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "orientation_pipeline_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-orientation_pipeline_example-Debug-07a7ae150516427243b8.json",
+					"name" : "orientation_pipeline_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "point_inside_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-point_inside_example-Debug-18bd491ee34d7297fae1.json",
+					"name" : "point_inside_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "point_inside_example_OM::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-point_inside_example_OM-Debug-aaac1c7a21ab9b633fb9.json",
+					"name" : "point_inside_example_OM",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "polyhedral_envelope::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-polyhedral_envelope-Debug-45f8d86722b986620118.json",
+					"name" : "polyhedral_envelope",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "polyhedral_envelope_mesh_containment::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-polyhedral_envelope_mesh_containment-Debug-0903ed952c8820aada81.json",
+					"name" : "polyhedral_envelope_mesh_containment",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "polyhedral_envelope_of_triangle_soup::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-polyhedral_envelope_of_triangle_soup-Debug-7e7f723546418b3f5675.json",
+					"name" : "polyhedral_envelope_of_triangle_soup",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "random_perturbation_SM_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-random_perturbation_SM_example-Debug-09fe017b90c0bb23d870.json",
+					"name" : "random_perturbation_SM_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "refine_fair_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-refine_fair_example-Debug-85701ce20f3ee5ba6067.json",
+					"name" : "refine_fair_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "repair_polygon_soup_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-repair_polygon_soup_example-Debug-dd480c8cabf2d12d6493.json",
+					"name" : "repair_polygon_soup_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "self_intersections_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-self_intersections_example-Debug-a603d3d89308c2fcc862.json",
+					"name" : "self_intersections_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "shape_smoothing_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-shape_smoothing_example-Debug-3b0ab07339eee8551368.json",
+					"name" : "shape_smoothing_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "stitch_borders_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-stitch_borders_example-Debug-600d194684b19825e01b.json",
+					"name" : "stitch_borders_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "stitch_borders_example_OM::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-stitch_borders_example_OM-Debug-61780b7fc237944b10bb.json",
+					"name" : "stitch_borders_example_OM",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "surface_mesh_intersection::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-surface_mesh_intersection-Debug-d6258c7af00c9bcfd795.json",
+					"name" : "surface_mesh_intersection",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "triangulate_faces_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-triangulate_faces_example-Debug-82431bf83e25dc3fdf93.json",
+					"name" : "triangulate_faces_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "triangulate_faces_example_OM::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-triangulate_faces_example_OM-Debug-43325a99ce5e2ce12bb1.json",
+					"name" : "triangulate_faces_example_OM",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "triangulate_faces_split_visitor_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-triangulate_faces_split_visitor_example-Debug-952ebd7b785161cab0e6.json",
+					"name" : "triangulate_faces_split_visitor_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "triangulate_polyline_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-triangulate_polyline_example-Debug-fee499e3fe1846d64225.json",
+					"name" : "triangulate_polyline_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "volume_connected_components::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-volume_connected_components-Debug-0ec2fcc811f339690946.json",
+					"name" : "volume_connected_components",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing/build",
+		"source" : "/home/server/MaJing/cpp_pro/autoss/external/CGAL/examples/Polygon_mesh_processing"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 0
+	}
+}

@@ -129,11 +129,17 @@ namespace acamcad
 	}
 	inline MPoint3 operator/(const MPoint3 &a, const double &b)
 	{
-		assert(abs(b) > 1e-14); //To Fix bug in hw12
+		assert(abs(b) > 1e-14); // To Fix bug in hw12
 		return MPoint3(a.x() / b, a.y() / b, a.z() / b);
 	}
 
 	inline std::ostream &operator<<(std::ostream &os, MPoint3 &Pt)
+	{
+		os << Pt[0] << " " << Pt[1] << " " << Pt[2];
+		return os;
+	}
+
+	inline std::ostream &operator<<(std::ostream &os, const MPoint3 &Pt)
 	{
 		os << Pt[0] << " " << Pt[1] << " " << Pt[2];
 		return os;
@@ -151,7 +157,7 @@ namespace acamcad
 		return std::sqrt(x * x + y * y + z * z);
 	}
 
-	//bool transform(const std::vector<double>& tfo)
+	// bool transform(const std::vector<double>& tfo)
 	//{
 	//	if (tfo.size() != 16) return false;
 	//	double old[3] = { P[0], P[1], P[2] };
@@ -162,6 +168,6 @@ namespace acamcad
 	//		P[i] += tfo[idx++];
 	//	}
 	//	return true;
-	//}
+	// }
 
 }
