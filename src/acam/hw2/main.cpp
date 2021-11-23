@@ -157,25 +157,25 @@ void testBasicTriangle()
 
 int main(int argc, char **argv)
 {
-	// if (argc != 2)
-	// {
-	// 	std::cout << "========== Hw2 Usage  ==========\n";
-	// 	std::cout << std::endl;
-	// 	std::cout << "Input:	ACAM_mesh_HW2.exe	mesh.obj\n";
-	// 	std::cout << std::endl;
-	// 	std::cout << "=================================================\n";
-	// 	return 1;
-	// }
+	if (argc != 2)
+	{
+		std::cout << "========== Hw2 Usage  ==========\n";
+		std::cout << std::endl;
+		std::cout << "Input:	./ACAM_mesh_HW2	mesh.obj\n";
+		std::cout << std::endl;
+		std::cout << "=================================================\n";
+		return 1;
+	}
 
-	std::string mesh_path = "example/hw2/PumpkinMesh.obj"; // argv[1];
+	std::string mesh_path = argv[1]; // "example/hw2/PumpkinMesh.obj";
 	PolyMesh *mesh = new PolyMesh();
 	loadMesh(mesh_path, mesh);
-	//create a basic mesh
+	// create a basic mesh
 	//	testBasicTriangle();
 
-	//mesh load an write , now only support obj/off
-	//PolyMesh* mesh = new PolyMesh();
-	//loadMesh("PumpkinMesh.obj", mesh);
+	// mesh load an write , now only support obj/off
+	// PolyMesh* mesh = new PolyMesh();
+	// loadMesh("PumpkinMesh.obj", mesh);
 
 	std::cout << "The curvature has area weight" << std::endl;
 	std::vector<double> vertexLAR(mesh->numVertices(), 0.0);

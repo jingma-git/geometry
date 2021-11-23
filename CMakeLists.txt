@@ -136,21 +136,21 @@ target_link_libraries( test_acam
 # Project Homework 2: Curvature Estimation and Visualization
 ############################################################
 
-# file (GLOB HW2_FILE
-#     src/acam/hw2/*.cpp
-# )
+file (GLOB HW2_FILE
+    src/acam/hw2/*.cpp
+)
 
-# # Add an executable with the above sources
-# add_executable(${PROJECT_NAME}_HW2 ${HW2_FILE})
-# target_include_directories(${PROJECT_NAME}_HW2
-#     PRIVATE 
-#         ${PROJECT_SOURCE_DIR}/include
-# )
+# Add an executable with the above sources
+add_executable(HW2 ${HW2_FILE})
+target_include_directories(HW2
+    PRIVATE 
+        ${PROJECT_SOURCE_DIR}/include
+)
 
-# target_link_libraries(${PROJECT_NAME}_HW2
-#     PRIVATE 
-#         ACAM_mesh
-# )
+target_link_libraries(HW2
+    PRIVATE 
+        ACAM_mesh
+)
 
 add_executable(igl_curvature src/igl/curvature.cpp)
 target_link_libraries(igl_curvature igl::core)
