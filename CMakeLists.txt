@@ -73,6 +73,13 @@ else()
    message("-- Not Found LIBIGL")
 endif()
 
+############################################################
+# geometry-central
+############################################################
+add_subdirectory(external/geometry_central)
+add_executable(test_geoc src/geoc/main.cpp)
+target_link_libraries(test_geoc geometry_central)
+target_include_directories(test_geoc PUBLIC external/geometry_central/include)
 
 ############################################################
 # Create ACAM library

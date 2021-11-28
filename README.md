@@ -10,6 +10,10 @@ https://www.bilibili.com/video/BV1B54y1B7Uc
 ## Design Principles and Code Style
 * [Libigl](https://libigl.github.io/)
 * Basic type such as vec, matrix must follow Eigen's API
+* for template class, implementation is in the header file
+* for short member function, implementation is in the header file
+* const global varaible: const INVALID_IND = ...;
+* class's member variable: mClsMemVar, or, memVar_, to distiguish from local variables
 
 ## ToDO:
 How to find the light direction given an image: n.dot(light) = diffuse

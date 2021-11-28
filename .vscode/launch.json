@@ -7,7 +7,7 @@
             "request": "launch",
             // Resolved by CMake Tools:
             "program": "${command:cmake.launchTargetPath}",
-            "args": ["data/cube.obj"],
+            "args": ["data/square.obj"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [
