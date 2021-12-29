@@ -65,6 +65,10 @@ namespace geometrycentral
             FaceSet faces();
             BoundaryLoopSet boundaryLoops();
 
+            // Utility function
+            size_t nConnectedComponents();
+            std::vector<Face> getConnectedComponents(); // return the seed face for each component
+
             // Methods for accessing elements by index
             // only valid when the  mesh is compressed
             Halfedge halfedge(size_t index);

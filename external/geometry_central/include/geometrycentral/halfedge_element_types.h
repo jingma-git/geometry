@@ -169,6 +169,12 @@ namespace geometrycentral
             Vertex secondVertex() const;
             std::array<Halfedge, 4> diamondBoundary() const;
             bool isDead() const;
+
+            // Iterators
+            NavigationSetBase<EdgeAdjacentHalfedgeNavigator> adjacentHalfedges() const;
+            NavigationSetBase<EdgeAdjacentInteriorHalfedgeNavigator> adjacentInteriorHalfedges() const;
+            NavigationSetBase<EdgeAdjacentFaceNavigator> adjacentFaces() const;
+            std::array<Vertex, 2> adjacentVertices() const;
         };
 
         // All edges
@@ -200,6 +206,13 @@ namespace geometrycentral
             bool isBoundaryLoop() const;
             bool isTriangle() const;
             // size_t degree() const;
+
+            // Iterators
+            NavigationSetBase<FaceAdjacentVertexNavigator> adjacentVertices() const;
+            NavigationSetBase<FaceAdjacentHalfedgeNavigator> adjacentHalfedges() const;
+            NavigationSetBase<FaceAdjacentCornerNavigator> adjacentCorners() const;
+            NavigationSetBase<FaceAdjacentEdgeNavigator> adjacentEdges() const;
+            NavigationSetBase<FaceAdjacentFaceNavigator> adjacentFaces() const;
         };
 
         // All faces
@@ -323,6 +336,99 @@ namespace geometrycentral
             void advance();
             bool isValid() const;
             typedef Halfedge Etype;
+            Etype currE;
+            typedef Face Rtype;
+            Rtype getCurrent() const;
+        };
+
+        // == Edge
+
+        // Adjacent halfedge
+        struct EdgeAdjacentHalfedgeNavigator
+        {
+            void advance();
+            bool isValid() const;
+            typedef Halfedge Etype;
+            Etype currE;
+            typedef Halfedge Rtype;
+            Rtype getCurrent() const;
+        };
+
+        // Adjacent interior halfedge
+        struct EdgeAdjacentInteriorHalfedgeNavigator
+        {
+            void advance();
+            bool isValid() const;
+            typedef Halfedge Etype;
+            Etype currE;
+            typedef Halfedge Rtype;
+            Rtype getCurrent() const;
+        };
+
+        // Adjacent interior halfedge
+        struct EdgeAdjacentFaceNavigator
+        {
+            void advance();
+            bool isValid() const;
+            typedef Halfedge Etype;
+            Etype currE;
+            typedef Face Rtype;
+            Rtype getCurrent() const;
+        };
+
+        // == Face
+
+        // Adjacent vertices
+        struct FaceAdjacentVertexNavigator
+        {
+            void advance();
+            bool isValid() const;
+            typedef Halfedge Etype;
+            Etype currE;
+            typedef Vertex Rtype;
+            Rtype getCurrent() const;
+        };
+
+        // Adjacent halfedge
+        struct FaceAdjacentHalfedgeNavigator
+        {
+            void advance();
+            bool isValid() const;
+            typedef Halfedge Etype;
+            Etype currE;
+            typedef Halfedge Rtype;
+            Rtype getCurrent() const;
+        };
+
+        // Adjacent corner
+        struct FaceAdjacentCornerNavigator
+        {
+            void advance();
+            bool isValid() const;
+            typedef Halfedge Etype;
+            Etype currE;
+            typedef Corner Rtype;
+            Rtype getCurrent() const;
+        };
+
+        // Adjacent edge
+        struct FaceAdjacentEdgeNavigator
+        {
+            void advance();
+            bool isValid() const;
+            typedef Halfedge Etype;
+            Etype currE;
+            typedef Edge Rtype;
+            Rtype getCurrent() const;
+        };
+
+        // Adjacent face
+        struct FaceAdjacentFaceNavigator
+        {
+            void advance();
+            bool isValid() const;
+            typedef std::pair<Halfedge, Halfedge>
+                Etype; // first is current halfedge of this face, second halfedge adjacent to face to return
             Etype currE;
             typedef Face Rtype;
             Rtype getCurrent() const;

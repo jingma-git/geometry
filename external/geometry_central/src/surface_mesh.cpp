@@ -342,5 +342,43 @@ namespace geometrycentral
                 vertexIterationCache[iV]++;
             }
         }
+
+        size_t SurfaceMesh::nConnectedComponents()
+        {
+            return getConnectedComponents().size();
+        }
+
+        std::vector<Face> SurfaceMesh::getConnectedComponents()
+        {
+            // bfs to get connected components
+            std::vector<Face> componentSeeds;
+            std::vector<bool> visit(nFaces(), false);
+
+            for (Face f : faces())
+            {
+                if (visit[f.getIndex()])
+                    continue;
+
+                std::list<Face> queue;
+                queue.push_back(f);
+                componentSeeds.push_back(f);
+
+                while (!queue.empty())
+                {
+                    Face curF = queue.front();
+                    queue.pop_front();
+                    visit[curF.getIndex()] = true;
+
+                    for (Face adjF : curF.adjacentFaces())
+                    {
+                        if (!visit[adjF.getIndex()])
+                        {
+                            queue.push_back(adjF);
+                        }
+                    }
+                }
+            }
+            return componentSeeds;
+        }
     }
 }

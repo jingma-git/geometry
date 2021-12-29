@@ -8,6 +8,7 @@
 #include <egl/min_max_coeff.h>
 #include <egl/cat.h>
 #include <egl/make_cube.h>
+#include <egl/plane.h>
 #include <iostream>
 using namespace Eigen;
 using namespace std;
@@ -121,6 +122,19 @@ void test_make_cube()
     cout << V << endl;
 }
 
+void test_plane()
+{
+    // Eigen::Vector3d p0(0, 0, 1), p1(1, 0, 0), p2(0, 1, 0), p(0.25, 0.25, 0.25);
+    // Plane plane(p0, p1, p2);
+    // double dist = plane.distance(p);
+    // cout << dist << endl;
+
+    Eigen::Vector3d p0(0, 0, 1), p1(1, 0, 0), p2(0, 1, 0), p(0.25, 0.25, 0.25);
+    Plane plane(p0, p1, p2);
+    double dist = plane.distance(p);
+    cout << dist << endl;
+}
+
 int main()
 {
     // test_edge_topology();
@@ -129,5 +143,6 @@ int main()
     // test_min_max();
     // test_cat();
     // test_make_cube();
+    test_plane();
     return 0;
 }

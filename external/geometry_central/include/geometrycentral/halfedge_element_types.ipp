@@ -180,11 +180,31 @@ namespace geometrycentral
         }
         inline bool Edge::isDead() const { return mesh->edgeIsDead(ind); }
 
+        // Circulators
+        inline NavigationSetBase<EdgeAdjacentHalfedgeNavigator> Edge::adjacentHalfedges() const
+        {
+            return NavigationSetBase<EdgeAdjacentHalfedgeNavigator>(halfedge());
+        }
+        inline NavigationSetBase<EdgeAdjacentInteriorHalfedgeNavigator> Edge::adjacentInteriorHalfedges() const
+        {
+            return NavigationSetBase<EdgeAdjacentInteriorHalfedgeNavigator>(halfedge());
+        }
+        inline NavigationSetBase<EdgeAdjacentFaceNavigator> Edge::adjacentFaces() const
+        {
+            return NavigationSetBase<EdgeAdjacentFaceNavigator>(halfedge());
+        }
+        inline std::array<Vertex, 2> Edge::adjacentVertices() const
+        {
+            Halfedge he = halfedge();
+            return std::array<Vertex, 2>{he.tailVertex(), he.tipVertex()};
+        }
+
         // Range iterators
         inline bool EdgeRangeF::elementOkay(const SurfaceMesh &mesh, size_t ind)
         {
             return !mesh.edgeIsDead(ind);
         }
+
         // ================          Face          ==================
         // ==========================================================
 
@@ -210,6 +230,28 @@ namespace geometrycentral
         }
 
         inline bool Face::isBoundaryLoop() const { return mesh->faceIsBoundaryLoop(ind); }
+
+        // Navigation iterators
+        inline NavigationSetBase<FaceAdjacentHalfedgeNavigator> Face::adjacentHalfedges() const
+        {
+            return NavigationSetBase<FaceAdjacentHalfedgeNavigator>(halfedge());
+        }
+        inline NavigationSetBase<FaceAdjacentVertexNavigator> Face::adjacentVertices() const
+        {
+            return NavigationSetBase<FaceAdjacentVertexNavigator>(halfedge());
+        }
+        inline NavigationSetBase<FaceAdjacentFaceNavigator> Face::adjacentFaces() const
+        {
+            return NavigationSetBase<FaceAdjacentFaceNavigator>(std::make_pair(halfedge(), halfedge()));
+        }
+        inline NavigationSetBase<FaceAdjacentEdgeNavigator> Face::adjacentEdges() const
+        {
+            return NavigationSetBase<FaceAdjacentEdgeNavigator>(halfedge());
+        }
+        inline NavigationSetBase<FaceAdjacentCornerNavigator> Face::adjacentCorners() const
+        {
+            return NavigationSetBase<FaceAdjacentCornerNavigator>(halfedge());
+        }
 
         // == Range iterators
         inline bool FaceRangeF::elementOkay(const SurfaceMesh &mesh, size_t ind)
@@ -244,6 +286,7 @@ namespace geometrycentral
         // In both the mannifold and nonmanifold case, if a vertex appears in a face multiple times,
         // (aka its a Delta-complex), then these iterators will return elements multiple times.
 
+        // == Vertex
         inline VertexNeighborIteratorState::VertexNeighborIteratorState(Halfedge currHe_, bool useImplicitTwin_) : useImplicitTwin(useImplicitTwin_), currHe(currHe_), firstHe(currHe_) {}
 
         inline void VertexNeighborIteratorState::advance()
@@ -329,6 +372,48 @@ namespace geometrycentral
         inline void VertexAdjacentFaceNavigator::advance() { currE = currE.nextOutgoingNeighbor(); }
         inline bool VertexAdjacentFaceNavigator::isValid() const { return currE.isInterior(); }
         inline Face VertexAdjacentFaceNavigator::getCurrent() const { return currE.face(); }
+
+        // == Edge
+        inline void EdgeAdjacentHalfedgeNavigator::advance() { currE = currE.sibling(); }
+        inline bool EdgeAdjacentHalfedgeNavigator::isValid() const { return true; }
+        inline Halfedge EdgeAdjacentHalfedgeNavigator::getCurrent() const { return currE; }
+
+        inline void EdgeAdjacentInteriorHalfedgeNavigator::advance() { currE = currE.sibling(); }
+        inline bool EdgeAdjacentInteriorHalfedgeNavigator::isValid() const { return currE.isInterior(); }
+        inline Halfedge EdgeAdjacentInteriorHalfedgeNavigator::getCurrent() const { return currE; }
+
+        inline void EdgeAdjacentFaceNavigator::advance() { currE = currE.sibling(); }
+        inline bool EdgeAdjacentFaceNavigator::isValid() const { return currE.isInterior(); }
+        inline Face EdgeAdjacentFaceNavigator::getCurrent() const { return currE.face(); }
+
+        // == Face
+        inline void FaceAdjacentVertexNavigator::advance() { currE = currE.next(); }
+        inline bool FaceAdjacentVertexNavigator::isValid() const { return true; }
+        inline Vertex FaceAdjacentVertexNavigator::getCurrent() const { return currE.vertex(); }
+
+        inline void FaceAdjacentHalfedgeNavigator::advance() { currE = currE.next(); }
+        inline bool FaceAdjacentHalfedgeNavigator::isValid() const { return true; }
+        inline Halfedge FaceAdjacentHalfedgeNavigator::getCurrent() const { return currE; }
+
+        inline void FaceAdjacentCornerNavigator::advance() { currE = currE.next(); }
+        inline bool FaceAdjacentCornerNavigator::isValid() const { return true; }
+        inline Corner FaceAdjacentCornerNavigator::getCurrent() const { return currE.corner(); }
+
+        inline void FaceAdjacentEdgeNavigator::advance() { currE = currE.next(); }
+        inline bool FaceAdjacentEdgeNavigator::isValid() const { return true; }
+        inline Edge FaceAdjacentEdgeNavigator::getCurrent() const { return currE.edge(); }
+
+        inline void FaceAdjacentFaceNavigator::advance()
+        {
+            currE.second = currE.second.sibling();
+            if (currE.first == currE.second)
+            {
+                currE.first = currE.first.next();
+                currE.second = currE.first;
+            }
+        }
+        inline bool FaceAdjacentFaceNavigator::isValid() const { return currE.first != currE.second && currE.second.isInterior(); }
+        inline Face FaceAdjacentFaceNavigator::getCurrent() const { return currE.second.face(); }
     }
 
 }
